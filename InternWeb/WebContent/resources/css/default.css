@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+* {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+f_box {
+  display: flex;
+  flex-direction: column;
+}
+
+#list {
+  list-style: none;
+  display: inline-block;
+}
+
+#list li {
+  display: inline-block;
+}
+
+#hiddenList {
+  display: none;
+  position: absolute;
+  background-color: white;
+}
+
+#hiddenList:hover {
+  display: block;
+}
+
+#hiddenList > ul {
+  list-style: none;
+}
+
+#hiddenList > ul > li {
+  display: inline-block;
+  color: white;
+}
