@@ -1,6 +1,8 @@
 package com.roh.model;
 
 public class FilePath {
+	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
+	
 	private String regisNumCardPath;
 	private String baseDocPath;
 	private String managerCertifyPath;
@@ -12,7 +14,7 @@ public class FilePath {
 	}
 
 	public void setRegisNumCardPath(String regisNumCardPath) {
-		this.regisNumCardPath = regisNumCardPath;
+		this.regisNumCardPath = filePath + regisNumCardPath;
 	}
 
 	public String getBaseDocPath() {
@@ -20,7 +22,7 @@ public class FilePath {
 	}
 
 	public void setBaseDocPath(String baseDocPath) {
-		this.baseDocPath = baseDocPath;
+		this.baseDocPath = filePath + baseDocPath;
 	}
 
 	public String getManagerCertifyPath() {
@@ -28,7 +30,7 @@ public class FilePath {
 	}
 
 	public void setManagerCertifyPath(String managerCertifyPath) {
-		this.managerCertifyPath = managerCertifyPath;
+		this.managerCertifyPath = filePath + managerCertifyPath;
 	}
 
 	public String getPersAgreementPath() {
@@ -36,7 +38,7 @@ public class FilePath {
 	}
 
 	public void setPersAgreementPath(String persAgreementPath) {
-		this.persAgreementPath = persAgreementPath;
+		this.persAgreementPath = filePath + persAgreementPath;
 	}
 
 	public String getUsageAgreementPath() {
@@ -44,7 +46,7 @@ public class FilePath {
 	}
 
 	public void setUsageAgreementPath(String usageAgreementPath) {
-		this.usageAgreementPath = usageAgreementPath;
+		this.usageAgreementPath = filePath + usageAgreementPath;
 	}
 
 }

@@ -56,4 +56,30 @@ public class Admin {
 		this.email = email;
 	}
 
+	public void setInstance(int index, String data) {
+		switch (index) {
+		case 1:
+			setType(Integer.parseInt(data));
+			break;
+		case 2:
+			setName(data);
+			break;
+		case 3:
+			setRank(data);
+			break;
+		case 4:
+			setTel(data);
+			break;
+		case 5:
+			setPhone(data);
+			break;
+		case 6:
+			setEmail(data);
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }

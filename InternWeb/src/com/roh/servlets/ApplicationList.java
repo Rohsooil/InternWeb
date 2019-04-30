@@ -10,21 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.roh.db.DataAccessObject;
+import com.roh.dto.VoteDTO;
 
-@WebServlet("/apply/findAdmin")
-public class ApplyFindAdmin extends HttpServlet {
+@WebServlet("/apply/applicationList")
+public class ApplicationList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String[] voteNumArray = request.getParameter("vote_num").split(",");
+		VoteDTO[] voteDatas = new VoteDTO[voteNumArray.length];
 		DataAccessObject dao = new DataAccessObject();
-		//int voteNum = dao.findVoteNum(request.getParameter("admin_name"), request.getParameter("admin_phone"));
-		Integer[] result = dao.findVoteNum(request.getParameter("admin_name"), request.getParameter("admin_phone"));
-		//System.out.println(voteNum);
-		response.getWriter().print(Arrays.toString(result));
-
-		response.getWriter().close();
-
+		for (int i = 0; i < voteNumArray.length; i++) {
+			voteDatas[i] = dao.findAppliedVote(Integer.parseInt(voteNumArray[i]));
+			request.getSession().setAttribute(voteNumArray[i], "authorized");
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().write(Arrays.toString(voteDatas));
 	}
 
 }

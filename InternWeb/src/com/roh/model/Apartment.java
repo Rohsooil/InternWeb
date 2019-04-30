@@ -1,7 +1,6 @@
 package com.roh.model;
 
 public class Apartment {
-	private int voteNum;
 	private String apartName;
 	private int apartType;
 	private String registerNum;
@@ -10,14 +9,6 @@ public class Apartment {
 	private String tel;
 	private String fax;
 	private String address;
-
-	public int getVoteNum() {
-		return voteNum;
-	}
-
-	public void setVoteNum(int voteNum) {
-		this.voteNum = voteNum;
-	}
 
 	public String getApartName() {
 		return apartName;
@@ -81,6 +72,37 @@ public class Apartment {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public void setInstance(int index, String data) {
+		switch (index) {
+		case 1:
+			setApartName(data);
+			break;
+		case 2:
+			setApartType(Integer.parseInt(data));
+			break;
+		case 3:
+			setRegisterNum(data);
+			break;
+		case 4:
+			setRepType(Integer.parseInt(data));
+			break;
+		case 5:
+			setRepName(data);
+			break;
+		case 6:
+			setTel(data);
+			break;
+		case 7:
+			setFax(data);
+			break;
+		case 8:
+			setAddress(data);
+			break;
+		default:
+			break;
+		}
 	}
 
 }

@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>rlhvote</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>application</web-resource-name>
+      <url-pattern>/*</url-pattern>
+      <http-method>HEAD</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>PUT</http-method>
+      <http-method>OPTIONS</http-method>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>list</web-resource-name>
+      <url-pattern>/apply/applicationList</url-pattern>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>admin</web-resource-name>
+      <url-pattern>/apply/findAdmin</url-pattern>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+  </security-constraint>
+  <error-page>
+    <error-code>405</error-code>
+    <location>/error/denyAccess.jsp</location>
+  </error-page>
 </web-app>

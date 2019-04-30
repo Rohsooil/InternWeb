@@ -35,10 +35,24 @@
 			</table>
 		<hr>
 		<button onclick="findRegisteredVote()">조회하기</button>
+		<br>
+		<hr>
+		<br>
+		<div id="appliedVoteWrap">
+			<table id="appliedVote">
+				<tr>
+					<th>투표 제목</th>
+					<th>투표 기간</th>
+					<th>지원 날짜</th>
+					<th>기능</th>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<myTag:Footer />
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/rlhvote/resources/script/ValidateNumber.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/VoteInformGetter.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/LookUpApplied.js" type="text/javascript"></script>
 </body>
 </html>

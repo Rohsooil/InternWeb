@@ -1,44 +1,89 @@
 @charset "utf-8";
 
 * {
-  margin: 0 auto;
-  padding: 0 auto;
+	margin: 0 auto;
+	padding: 0 auto;
 }
 
 a {
-  text-decoration: none;
-  color: black;
+	text-decoration: none;
+	color: black;
 }
 
 f_box {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 #list {
-  list-style: none;
-  display: inline-block;
+	list-style: none;
+	display: inline-block;
 }
 
 #list li {
-  display: inline-block;
+	display: inline-block;
 }
 
 #hiddenList {
-  display: none;
-  position: absolute;
-  background-color: white;
+	display: none;
+	position: absolute;
+	background-color: white;
 }
 
 #hiddenList:hover {
-  display: block;
+	display: block;
 }
 
-#hiddenList > ul {
-  list-style: none;
+#hiddenList>ul {
+	list-style: none;
 }
 
-#hiddenList > ul > li {
+#hiddenList>ul>li {
+	display: inline-block;
+	color: white;
+}
+
+#appliedVoteWrap {
+	display: block;
+	background-color: white;
+	width: 80%;
+}
+
+#appliedVoteWrap #appliedVote {
+	border-color: black;
+	border: 1px;
+	color: black;
+}
+
+#appliedVoteWrap #appliedVote {
+	border-color: black;
+	border: 1px;
+	color: black;
+}
+
+.fileLabel {
   display: inline-block;
-  color: white;
+  padding: 3px 5px;
+  color: #fff;
+  background-color: #555555;
+  cursor: pointer;
+}
+
+.fileLabel:hover {
+  background-color: #888888;
+}
+
+.fileLabel:active {
+  background-color: #000000;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

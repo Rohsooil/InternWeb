@@ -1,6 +1,7 @@
 package com.roh.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,25 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/apply/applyForm")
-public class ApplyPolicy extends HttpServlet {
+@WebServlet("/apply/applicationModify")
+public class ApplicationSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applyPolicy.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applyFind.jsp");
 		dispatcher.forward(request, response);
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		if (request.getParameter("allChecked").equals("true")) {
-			response.sendRedirect(request.getContextPath() + "/apply/application");
-		} else {
-			response.sendRedirect(request.getContextPath() + "/apply/applyForm");
-		}
-
 	}
 
 }

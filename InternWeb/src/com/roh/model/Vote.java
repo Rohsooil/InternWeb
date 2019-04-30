@@ -1,11 +1,13 @@
 package com.roh.model;
 
+import com.roh.beans.Date;
+
 public class Vote {
 	private String title;
 	private int type;
 	private int estimate;
-	private String startDay;
-	private String endDay;
+	private Date startDay;
+	private Date endDay;
 	private String[] media;
 
 	public String getTitle() {
@@ -24,19 +26,19 @@ public class Vote {
 		this.type = type;
 	}
 
-	public String getStartDay() {
+	public Date getStartDay() {
 		return startDay;
 	}
 
-	public void setStartDay(String startDay) {
+	public void setStartDay(Date startDay) {
 		this.startDay = startDay;
 	}
 
-	public String getEndDay() {
+	public Date getEndDay() {
 		return endDay;
 	}
 
-	public void setEndDay(String endDay) {
+	public void setEndDay(Date endDay) {
 		this.endDay = endDay;
 	}
 
@@ -56,5 +58,25 @@ public class Vote {
 		this.estimate = estimate;
 	}
 
-	// https://yoonka.tistory.com/450
+	public void setInstance(int index, String data) {
+		switch (index) {
+		case 1:
+			setTitle(data);
+			break;
+		case 2:
+			setType(Integer.parseInt(data));
+			break;
+		case 3:
+			setEstimate(Integer.parseInt(data));
+			break;
+		case 4:
+			setStartDay(new Date(data));
+			break;
+		case 5:
+			setEndDay(new Date(data));
+			break;
+		default:
+			break;
+		}
+	}
 }

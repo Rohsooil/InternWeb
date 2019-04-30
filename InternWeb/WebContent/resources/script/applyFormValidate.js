@@ -98,8 +98,36 @@ function sendFile(event, inputTag) {
   xmlRequest.send(formData);
   xmlRequest.onload = function(e) {
     if (this.status == 200) {
-      console.log(this.response);
       document.getElementById(inputTag.id + "Path").value = this.response;
+      var downloadTag = document.getElementById(inputTag.id + "Download");
+      downloadTag.innerHTML = inputTag.files[0].name;
     }
   };
+}
+
+function downloadFile(event) {
+  var path = event.target.id.replace("Download", "Path");
+  var fileName = document.getElementById(path).value;
+  var realFileName = event.target.text;
+  window.location.assign(
+    "./file?file=" +
+      encodeURI(fileName) +
+      "&realFileName=" +
+      encodeURI(realFileName)
+  );
+}
+
+function modifyForm(id) {
+  setVoteDate();
+  setAdminEmail();
+  setAdminPhone();
+  setApartPhone();
+  var form = document.getElementsByTagName("form")[0];
+  var vote_num = document.createElement("input");
+  vote_num.setAttribute("type", "hidden");
+  vote_num.setAttribute("name", "vote_num");
+  vote_num.setAttribute("value", id);
+  form.append(vote_num);
+  form.action = "./modify";
+  form.submit();
 }
