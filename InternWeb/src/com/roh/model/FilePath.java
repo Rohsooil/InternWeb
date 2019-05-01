@@ -1,7 +1,7 @@
 package com.roh.model;
 
 public class FilePath {
-	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
+	public static final String filePath = "C:\\Users\\food8\\Documents\\files\\";
 	
 	private String regisNumCardPath;
 	private String baseDocPath;

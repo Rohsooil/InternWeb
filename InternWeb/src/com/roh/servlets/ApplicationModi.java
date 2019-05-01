@@ -1,6 +1,7 @@
 package com.roh.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.roh.beans.Date;
-import com.roh.db.DataAccessObject;
+import com.roh.db.AdminAccessObject;
+import com.roh.db.ApartAccessObject;
+import com.roh.db.DBConnector;
+import com.roh.db.VoteAccessObject;
+import com.roh.db.VoteMediaAccessObject;
 import com.roh.model.Admin;
 import com.roh.model.Apartment;
 import com.roh.model.Vote;
@@ -62,37 +67,48 @@ public class ApplicationModi extends HttpServlet {
 //		filePath.setPersAgreementPath(request.getParameter("persAgreementPath"));
 //		filePath.setUsageAgreementPath(request.getParameter("usageAgreementPath"));
 
-		DataAccessObject dao = new DataAccessObject();
-		int first = dao.updateVote(vote_num, vote);
-		int second = dao.updateVoteMedia(vote_num, vote.getMedia());
-		int thrid = dao.updateAdmin(vote_num, admin);
-		int fourth = dao.updateApart(vote_num, apart);
+		try {
+			DBConnector dbConnector = new DBConnector();
 
-		if (first == 1) {
-			System.out.println("first succes");
-		} else {
-			System.out.println("First fail");
-		}
-		if (second == 1) {
-			System.out.println("Second succes");
-		} else {
-			System.out.println("Second fail");
-		}
-		if (thrid == 1) {
-			System.out.println("Third succes");
-		} else {
-			System.out.println("Third fail");
-		}
+			// DataAccessObject dao = new DataAccessObject();
+			int vote_result = new VoteAccessObject().update(dbConnector, vote_num, vote);
+			int vote_media_result = new VoteMediaAccessObject().update(dbConnector, vote_num, vote.getMedia());
+			int admin_result = new AdminAccessObject().update(dbConnector, vote_num, admin);
+			int apart_result = new ApartAccessObject().update(dbConnector, vote_num, apart);
 
-		if (fourth == 1) {
-			System.out.println("fourth succes");
-		} else {
-			System.out.println("fourth fail");
-		}
+//		int first = dao.updateVote(vote_num, vote);
+//		int second = dao.updateVoteMedia(vote_num, vote.getMedia());
+//		int thrid = dao.updateAdmin(vote_num, admin);
+//		int fourth = dao.updateApart(vote_num, apart);
 
-		if (fourth == 1) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applySuccess.jsp");
-			dispatcher.forward(request, response);
+			if (vote_result == 1) {
+				System.out.println("first succes");
+			} else {
+				System.out.println("First fail");
+			}
+			if (vote_media_result == 1) {
+				System.out.println("Second succes");
+			} else {
+				System.out.println("Second fail");
+			}
+			if (admin_result == 1) {
+				System.out.println("Third succes");
+			} else {
+				System.out.println("Third fail");
+			}
+
+			if (apart_result == 1) {
+				System.out.println("fourth succes");
+			} else {
+				System.out.println("fourth fail");
+			}
+
+			if (apart_result == 1) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applySuccess.jsp");
+				dispatcher.forward(request, response);
+			}
+		} catch (SQLException e) {
+
 		}
 
 //		if (fileRowCount == 1) {

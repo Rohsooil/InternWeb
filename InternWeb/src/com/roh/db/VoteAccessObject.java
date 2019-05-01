@@ -13,7 +13,7 @@ public class VoteAccessObject {
 	private final String selectQuery = "Select * from vote where vote_num = ?";
 	private final String updateQuery = "UPDATE vote set vote_title=?, vote_type=?, vote_estimate =?, vote_startday=?, vote_endday=? where vote_num = ?;";
 
-	public int insert(Vote vote) throws SQLException {
+	public int insert(DBConnector dbConnector, Vote vote) throws SQLException {
 		int vote_num = 0;
 		Connection connection = new DBConnector().getConnection();
 		PreparedStatement pstmt = connection.prepareStatement(insertQuery, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -28,14 +28,14 @@ public class VoteAccessObject {
 		ResultSet resultSet = pstmt.getGeneratedKeys();
 		vote_num = (resultSet.next()) ? resultSet.getInt(1) : 0;
 
-		close(connection, pstmt, resultSet);
+		dbConnector.close(connection, pstmt, resultSet);
 
 		return vote_num;
 	}
 
-	public Vote select(int voteNum) throws SQLException {
+	public Vote select(DBConnector dbConnector, int voteNum) throws SQLException {
 		Vote vote = new Vote();
-		Connection connection = new DBConnector().getConnection();
+		Connection connection = dbConnector.getConnection();
 		PreparedStatement pstmt = connection.prepareStatement(selectQuery);
 
 		pstmt.setInt(1, voteNum);
@@ -49,15 +49,15 @@ public class VoteAccessObject {
 			}
 		}
 
-		close(connection, pstmt, resultSet);
+		dbConnector.close(connection, pstmt, resultSet);
 
 		return vote;
 	}
 
-	public int update(int vote_num, Vote vote) throws SQLException {
+	public int update(DBConnector dbConnector, int vote_num, Vote vote) throws SQLException {
 
 		int result = 0;
-		Connection connection = new DBConnector().getConnection();
+		Connection connection = dbConnector.getConnection();
 		PreparedStatement pstmt = connection.prepareStatement(updateQuery);
 
 		pstmt.setString(1, vote.getTitle());
@@ -69,20 +69,9 @@ public class VoteAccessObject {
 
 		result = pstmt.executeUpdate();
 
-		close(connection, pstmt, null);
+		dbConnector.close(connection, pstmt, null);
 
 		return result;
 	}
 
-	private void close(Connection connection, PreparedStatement pstmt, ResultSet resultSet) throws SQLException {
-		if (resultSet != null) {
-			resultSet.close();
-		}
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (connection != null) {
-			connection.close();
-		}
-	}
 }

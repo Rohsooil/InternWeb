@@ -1,6 +1,7 @@
 package com.roh.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.roh.beans.Date;
-import com.roh.db.DataAccessObject;
+import com.roh.db.AdminAccessObject;
+import com.roh.db.ApartAccessObject;
+import com.roh.db.DBConnector;
+import com.roh.db.FilePathAccessObject;
+import com.roh.db.VoteAccessObject;
+import com.roh.db.VoteMediaAccessObject;
 import com.roh.model.Admin;
 import com.roh.model.Apartment;
 import com.roh.model.FilePath;
@@ -34,7 +40,7 @@ public class ApplicationForm extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		Vote vote = new Vote();
 		vote.setTitle(request.getParameter("vote_title"));
 		vote.setType(Integer.parseInt(request.getParameter("vote_type")));
@@ -60,7 +66,7 @@ public class ApplicationForm extends HttpServlet {
 		apart.setTel(request.getParameter("apart_tel"));
 		apart.setFax(request.getParameter("apart_fax"));
 		apart.setAddress(request.getParameter("apart_address"));
-		
+
 		FilePath filePath = new FilePath();
 		filePath.setRegisNumCardPath(request.getParameter("regisNumCardPath"));
 		filePath.setBaseDocPath(request.getParameter("baseDocPath"));
@@ -68,53 +74,63 @@ public class ApplicationForm extends HttpServlet {
 		filePath.setPersAgreementPath(request.getParameter("persAgreementPath"));
 		filePath.setUsageAgreementPath(request.getParameter("usageAgreementPath"));
 
-		DataAccessObject dao = new DataAccessObject();
-		int vote_num = dao.insertVote(vote);
-		int secondRowCount = 0;
-		secondRowCount = dao.insertVoteMedia(vote_num, vote.getMedia());
+		try {
+			DBConnector dbConnector = new DBConnector();
+			int vote_num = new VoteAccessObject().insert(dbConnector, vote);
+			int secondRowCount = new VoteMediaAccessObject().insert(dbConnector, vote_num, vote.getMedia());
+			int adminRowCount = new AdminAccessObject().insert(dbConnector, vote_num, admin);
+			int apartRowCount = new ApartAccessObject().insert(dbConnector, vote_num, apart);
+			int fileRowCount = new FilePathAccessObject().insert(dbConnector, vote_num, filePath);
 
-		int adminRowCount = dao.insertVoteAdmin(vote_num, admin);
+			if (vote_num != 0) {
+				System.out.println("succes");
+			} else {
+				System.out.println("fail");
+			}
+			if (secondRowCount == 1) {
+				System.out.println("Second succes");
+			} else {
+				System.out.println("Second fail");
+			}
+			if (adminRowCount == 1) {
+				System.out.println("Third succes");
+			} else {
+				System.out.println("Third fail");
+			}
 
-		int apartRowCount = dao.insertVoteApart(vote_num, apart);
+			if (apartRowCount == 1) {
+				System.out.println("fourth succes");
+			} else {
+				System.out.println("fourth fail");
+			}
 
-		int fileRowCount = dao.insertVoteFilePath(vote_num, filePath);
+			if (fileRowCount == 1) {
+				System.out.println("last succes");
+			} else {
+				System.out.println("last fail");
+			}
 
-		if (vote_num != 0) {
-			System.out.println("succes");
-		} else {
-			System.out.println("fail");
+			if (fileRowCount == 1) {
+				System.out.println("Last succes");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applySuccess.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Last fail");
+				response.sendRedirect(request.getContextPath() + "/apply/application");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		if (secondRowCount == 1) {
-			System.out.println("Second succes");
-		} else {
-			System.out.println("Second fail");
-		}
-		if (adminRowCount == 1) {
-			System.out.println("Third succes");
-		} else {
-			System.out.println("Third fail");
-		}
-
-		if (apartRowCount == 1) {
-			System.out.println("fourth succes");
-		} else {
-			System.out.println("fourth fail");
-		}
-
-		if (fileRowCount == 1) {
-			System.out.println("last succes");
-		} else {
-			System.out.println("last fail");
-		}
-
-		if (fileRowCount == 1) {
-			System.out.println("Last succes");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applySuccess.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			System.out.println("Last fail");
-			response.sendRedirect(request.getContextPath() + "/apply/application");
-		}
+//		DataAccessObject dao = new DataAccessObject();
+//		int vote_num = dao.insertVote(vote);
+//		int secondRowCount = 0;
+//		secondRowCount = dao.insertVoteMedia(vote_num, vote.getMedia());
+//
+//		int adminRowCount = dao.insertVoteAdmin(vote_num, admin);
+//
+//		int apartRowCount = dao.insertVoteApart(vote_num, apart);
+//
+//		int fileRowCount = dao.insertVoteFilePath(vote_num, filePath);
 
 	}
 
