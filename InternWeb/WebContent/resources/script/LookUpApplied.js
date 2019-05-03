@@ -1,6 +1,7 @@
 function findRegisteredVote() {
   var auth_num = document.getElementById("auth_num").value;
   if (window.vote_num !== undefined && auth_num === "0000") {
+    removeAppendedRow();
     lookUpApplied();
   } else {
     alert("인증번호가 일치하지 않습니다.");
@@ -28,7 +29,6 @@ function lookUpApplied() {
 function makeAppliedTable(vote) {
   var table = document.getElementById("appliedVote");
   var row = document.createElement("tr");
-
   var titleTag = makeElement("th", vote.title);
   var voteDayTag = makeElement("td", vote.startDay + "~" + vote.endDay);
   var applyDayTag = makeElement("td", vote.applyDay);
@@ -47,7 +47,16 @@ function makeAppliedTable(vote) {
   row.append(applyDayTag);
   row.append(modify_td);
 
+  row.className = "appendedRow";
+
   table.append(row);
+}
+
+function removeAppendedRow() {
+  var appendedRow = document.querySelectorAll(".appendedRow");
+  appendedRow.forEach(element => {
+    element.remove();
+  });
 }
 
 function makeElement(tagName, text) {

@@ -1,8 +1,8 @@
 package com.roh.model;
 
 public class FilePath {
-	public static final String filePath = "C:\\Users\\food8\\Documents\\files\\";
-	
+	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
+
 	private String regisNumCardPath;
 	private String baseDocPath;
 	private String managerCertifyPath;
@@ -14,7 +14,7 @@ public class FilePath {
 	}
 
 	public void setRegisNumCardPath(String regisNumCardPath) {
-		this.regisNumCardPath = filePath + regisNumCardPath;
+		this.regisNumCardPath = regisNumCardPath;
 	}
 
 	public String getBaseDocPath() {
@@ -22,7 +22,7 @@ public class FilePath {
 	}
 
 	public void setBaseDocPath(String baseDocPath) {
-		this.baseDocPath = filePath + baseDocPath;
+		this.baseDocPath = baseDocPath;
 	}
 
 	public String getManagerCertifyPath() {
@@ -30,7 +30,7 @@ public class FilePath {
 	}
 
 	public void setManagerCertifyPath(String managerCertifyPath) {
-		this.managerCertifyPath = filePath + managerCertifyPath;
+		this.managerCertifyPath = managerCertifyPath;
 	}
 
 	public String getPersAgreementPath() {
@@ -38,7 +38,7 @@ public class FilePath {
 	}
 
 	public void setPersAgreementPath(String persAgreementPath) {
-		this.persAgreementPath = filePath + persAgreementPath;
+		this.persAgreementPath = persAgreementPath;
 	}
 
 	public String getUsageAgreementPath() {
@@ -46,7 +46,29 @@ public class FilePath {
 	}
 
 	public void setUsageAgreementPath(String usageAgreementPath) {
-		this.usageAgreementPath = filePath + usageAgreementPath;
+		this.usageAgreementPath = usageAgreementPath;
+	}
+
+	public void setInstance(int index, String data) {
+		switch (index) {
+		case 1:
+			setRegisNumCardPath(data);
+			break;
+		case 2:
+			setBaseDocPath(data);
+			break;
+		case 3:
+			setManagerCertifyPath(data);
+			break;
+		case 4:
+			setPersAgreementPath(data);
+			break;
+		case 5:
+			setUsageAgreementPath(data);
+			break;
+		default:
+			break;
+		}
 	}
 
 }

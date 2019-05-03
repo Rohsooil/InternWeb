@@ -36,7 +36,7 @@ public class ApplicationFile extends HttpServlet {
 			File file = new File(url.getFile());
 
 			resp.setContentType("application/octet-stream;charset=utf-8");
-			resp.setHeader("Content-Disposition", "attachment; filename=\"" + realFileName + "\";");
+			resp.setHeader("Content-Disposition", "attachment; filename=\"" + realFileName);
 
 			BufferedInputStream is = new BufferedInputStream(new FileInputStream(file));
 			BufferedOutputStream os = new BufferedOutputStream(resp.getOutputStream());
@@ -56,21 +56,24 @@ public class ApplicationFile extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Part path = request.getPart("file");
-		InputStream is = path.getInputStream();
-		String dir = FilePath.filePath + request.getParameter("file_dir");
-		File file = new File(dir, request.getSession().getId() + "-" + request.getParameter("file_name"));
-		FileOutputStream fos = new FileOutputStream(file);
-		int stream = 0;
-		while ((stream = is.read()) >= 0) {
-			fos.write(stream);
+		if (request.getPart("file") == null) {
+			response.sendError(405);
+		} else {
+			Part path = request.getPart("file");
+			InputStream is = path.getInputStream();
+			String dir = FilePath.filePath + request.getParameter("file_dir");
+			File file = new File(dir, request.getSession().getId() + "-" + request.getParameter("file_name"));
+			FileOutputStream fos = new FileOutputStream(file);
+			int stream = 0;
+			while ((stream = is.read()) >= 0) {
+				fos.write(stream);
+			}
+			is.close();
+			fos.close();
+			response.setContentType("text/plain;charset=UTF-8");
+			response.getWriter().println(request.getParameter("file_dir") + "\\" + file.getName());
+			response.getWriter().close();
 		}
-		is.close();
-		fos.close();
-		response.setContentType("text/plain;charset=UTF-8");
-		response.getWriter().println(request.getParameter("file_dir") + "\\" + file.getName());
-		response.getWriter().close();
-
 	}
 
 }

@@ -50,40 +50,53 @@ f_box {
 }
 
 #appliedVoteWrap #appliedVote {
-	border-color: black;
-	border: 1px;
-	color: black;
-}
-
-#appliedVoteWrap #appliedVote {
-	border-color: black;
-	border: 1px;
+	width : 100%;
+	border-collapse: separate;
+	border-spacing: 20px 5px;
 	color: black;
 }
 
 .fileLabel {
-  display: inline-block;
-  padding: 3px 5px;
-  color: #fff;
-  background-color: #555555;
-  cursor: pointer;
+	display: inline-block;
+	padding: 3px 5px;
+	color: #fff;
+	background-color: #555555;
+	cursor: pointer;
 }
 
 .fileLabel:hover {
-  background-color: #888888;
+	background-color: #888888;
 }
 
 .fileLabel:active {
-  background-color: #000000;
+	background-color: #000000;
 }
 
 .fileInput {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.txtform {
+	width: 95%;
+	border: 1px solid #b7b7b7;
+	padding: 16px 20px;
+	color: white;
+}
+
+.txtform p {
+	font-size: 16px;
+}
+
+.txtform p.detail {
+	font-size: 13px;
+	height: 400px;
+	overflow: scroll;
+	height: 300px;
 }

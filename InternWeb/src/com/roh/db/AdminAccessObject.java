@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashSet;
 
 import com.roh.model.Admin;
 
@@ -66,6 +67,28 @@ public class AdminAccessObject {
 		result = pstmt.executeUpdate();
 
 		dbConnector.close(connection, pstmt, null);
+		return result;
+	}
+
+	public Integer[] selectVoteNum(DBConnector dbConnector, String adminName, String adminPhone) throws SQLException {
+		String sql = "SELECT vote_num FROM `admin` WHERE admin_name = ? AND admin_phone = ?";
+		Integer[] result = null;
+		Connection connection = dbConnector.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, adminName);
+		pstmt.setString(2, adminPhone);
+
+		ResultSet resultSet = pstmt.executeQuery();
+		HashSet<Integer> hs = new HashSet<>();
+		// System.out.println(rs.getArray(1));
+		int index = 1;
+		while (resultSet.next()) {
+			hs.add(resultSet.getInt(index));
+		}
+		resultSet.close();
+		result = hs.toArray(new Integer[hs.size()]);
+
+		dbConnector.close(connection, pstmt, resultSet);
 		return result;
 	}
 

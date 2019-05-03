@@ -1,15 +1,18 @@
 package com.roh.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.roh.db.DataAccessObject;
+import com.roh.db.DBConnector;
+import com.roh.db.VoteAccessObject;
 import com.roh.dto.VoteDTO;
 
 @WebServlet("/apply/applicationList")
@@ -18,15 +21,22 @@ public class ApplicationList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String[] voteNumArray = request.getParameter("vote_num").split(",");
-		VoteDTO[] voteDatas = new VoteDTO[voteNumArray.length];
-		DataAccessObject dao = new DataAccessObject();
-		for (int i = 0; i < voteNumArray.length; i++) {
-			voteDatas[i] = dao.findAppliedVote(Integer.parseInt(voteNumArray[i]));
-			request.getSession().setAttribute(voteNumArray[i], "authorized");
+		try {
+			String[] voteNumArray = request.getParameter("vote_num").split(",");
+			VoteDTO[] voteDatas = new VoteDTO[voteNumArray.length];
+			
+			DBConnector dbConnector = new DBConnector();
+			VoteAccessObject vao = new VoteAccessObject();
+			for (int i = 0; i < voteNumArray.length; i++) {
+				voteDatas[i] = vao.selectAppliedVote(dbConnector, Integer.parseInt(voteNumArray[i]));
+				request.getSession().setAttribute(voteNumArray[i], "authorized");
+			}
+			response.setContentType("application/json;charset=UTF-8");
+			response.getWriter().write(Arrays.toString(voteDatas));
+		} catch (SQLException e) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/error/inputError.jsp");
+			dispatcher.forward(request, response);
 		}
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(Arrays.toString(voteDatas));
 	}
 
 }

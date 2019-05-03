@@ -1,10 +1,66 @@
+// require(this, [validatePath + "DateCheck.js"], DateCheck => {
+//   return {
+//     isStartRight: DateCheck.isStartRight
+//   };
+// })();
+
 function saveForm() {
   setVoteDate();
   setAdminEmail();
   setAdminPhone();
   setApartPhone();
-  var form = document.getElementsByTagName("form")[0];
-  form.submit();
+
+  var isRightDate = checkVoteDate(
+    document.getElementById("voteBeginDate").value,
+    document.getElementById("voteEndDate").value
+  );
+
+  if (isRightDate === 1 && isAllInputed()) {
+    var form = document.getElementsByTagName("form")[0];
+    form.submit();
+  } else if (!isAllInputed()) {
+    alert("입력칸이 비어있습니다.");
+  } else if (isRightDate === 2) {
+    alert("투표 시작 날짜가 오늘보다 이전입니다.");
+  } else if (isRightDate === 3) {
+    alert("투표 종료 날짜가 시작보다 이전입니다.");
+  } else if (isRightDate == 4) {
+    alert("투표시작 날짜와 투표종료 날짜는 최대 3일 입니다.");
+  }
+}
+
+function isAllInputed() {
+  var forms = document.forms;
+  for (let item of forms[0]) {
+    if (item.name !== "") {
+      if (item.type === "text" && item.value === "") {
+        return false;
+      } else if (item.type === "checkbox" && item.checked === "") {
+        return false;
+      } else if (item.type === "hidden" && item.value === "") {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function checkVoteDate(startDay, endDay) {
+  var now = new Date();
+  var start = new Date(startDay);
+  var end = new Date(endDay);
+
+  var rightEnd = new Date(startDay);
+  rightEnd.setDate(start.getDate() + 3);
+
+  if (now > start) {
+    return 2;
+  } else if (start > end) {
+    return 3;
+  } else if (end > rightEnd) {
+    return 4;
+  }
+  return 1;
 }
 
 function setVoteDate() {
@@ -117,17 +173,45 @@ function downloadFile(event) {
   );
 }
 
+function authorize(event) {
+  event.preventDefault();
+  if (document.getElementById("register_num").value !== "0000") {
+    alert("0000을 입력해주시면됩니다.");
+  } else {
+    alert("인증되었습니다.");
+  }
+}
+
 function modifyForm(id) {
   setVoteDate();
   setAdminEmail();
   setAdminPhone();
   setApartPhone();
+
   var form = document.getElementsByTagName("form")[0];
   var vote_num = document.createElement("input");
   vote_num.setAttribute("type", "hidden");
   vote_num.setAttribute("name", "vote_num");
   vote_num.setAttribute("value", id);
+
   form.append(vote_num);
   form.action = "./modify";
-  form.submit();
+
+  var isRightDate = checkVoteDate(
+    document.getElementById("voteBeginDate").value,
+    document.getElementById("voteEndDate").value
+  );
+
+  if (isRightDate === 1 && isAllInputed()) {
+    var form = document.getElementsByTagName("form")[0];
+    form.submit();
+  } else if (!isAllInputed()) {
+    alert("입력칸이 비어있습니다.");
+  } else if (isRightDate === 2) {
+    alert("투표 시작 날짜가 오늘보다 이전입니다.");
+  } else if (isRightDate === 3) {
+    alert("투표 종료 날짜가 시작보다 이전입니다.");
+  } else if (isRightDate == 4) {
+    alert("투표시작 날짜와 투표종료 날짜는 최대 3일 입니다.");
+  }
 }

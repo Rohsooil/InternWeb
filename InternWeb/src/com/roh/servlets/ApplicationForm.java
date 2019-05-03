@@ -77,61 +77,21 @@ public class ApplicationForm extends HttpServlet {
 		try {
 			DBConnector dbConnector = new DBConnector();
 			int vote_num = new VoteAccessObject().insert(dbConnector, vote);
-			int secondRowCount = new VoteMediaAccessObject().insert(dbConnector, vote_num, vote.getMedia());
-			int adminRowCount = new AdminAccessObject().insert(dbConnector, vote_num, admin);
-			int apartRowCount = new ApartAccessObject().insert(dbConnector, vote_num, apart);
-			int fileRowCount = new FilePathAccessObject().insert(dbConnector, vote_num, filePath);
+			int mediaResult = new VoteMediaAccessObject().insert(dbConnector, vote_num, vote.getMedia());
+			int adminResult = new AdminAccessObject().insert(dbConnector, vote_num, admin);
+			int apartResult = new ApartAccessObject().insert(dbConnector, vote_num, apart);
+			int fileResult = new FilePathAccessObject().insert(dbConnector, vote_num, filePath);
 
-			if (vote_num != 0) {
-				System.out.println("succes");
-			} else {
-				System.out.println("fail");
-			}
-			if (secondRowCount == 1) {
-				System.out.println("Second succes");
-			} else {
-				System.out.println("Second fail");
-			}
-			if (adminRowCount == 1) {
-				System.out.println("Third succes");
-			} else {
-				System.out.println("Third fail");
-			}
-
-			if (apartRowCount == 1) {
-				System.out.println("fourth succes");
-			} else {
-				System.out.println("fourth fail");
-			}
-
-			if (fileRowCount == 1) {
-				System.out.println("last succes");
-			} else {
-				System.out.println("last fail");
-			}
-
-			if (fileRowCount == 1) {
-				System.out.println("Last succes");
+			if (vote_num > 0 && mediaResult == 1 && adminResult == 1 && apartResult == 1 && fileResult == 1) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applySuccess.jsp");
 				dispatcher.forward(request, response);
 			} else {
-				System.out.println("Last fail");
 				response.sendRedirect(request.getContextPath() + "/apply/application");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/error/inputError.jsp");
+			dispatcher.forward(request, response);
 		}
-//		DataAccessObject dao = new DataAccessObject();
-//		int vote_num = dao.insertVote(vote);
-//		int secondRowCount = 0;
-//		secondRowCount = dao.insertVoteMedia(vote_num, vote.getMedia());
-//
-//		int adminRowCount = dao.insertVoteAdmin(vote_num, admin);
-//
-//		int apartRowCount = dao.insertVoteApart(vote_num, apart);
-//
-//		int fileRowCount = dao.insertVoteFilePath(vote_num, filePath);
-
 	}
 
 }

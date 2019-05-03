@@ -21,11 +21,7 @@ public class ApplicationPolicy extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getParameter("allChecked").equals("true")) {
-			response.sendRedirect(request.getContextPath() + "/apply/application");
-		} else {
-			response.sendRedirect(request.getContextPath() + "/apply/applyForm");
-		}
+		response.sendError(405);
 
 	}
 

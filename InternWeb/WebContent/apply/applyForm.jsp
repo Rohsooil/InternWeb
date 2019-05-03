@@ -23,7 +23,7 @@
 					<th>아파트 구분</th>
 					<td>
 						<label>
-							<input class="apart_type" type="radio" name="apart_type" value="1">
+							<input class="apart_type" type="radio" name="apart_type" value="1" checked="checked">
 							<span>일반 주택</span>
 						</label>
 						<label>
@@ -35,15 +35,15 @@
 				<tr>
 					<th>사업자 등록번호</th>
 					<td>
-						<input type="text" class="numberInput" name="register_num" value="${requestScope.apart.registerNum}">
-						<button>인증</button>
+						<input type="text" id="register_num" class="numberInput" name="register_num" value="${requestScope.apart.registerNum}">
+						<button onclick="authorize(event)">인증</button>
 					</td>
 				</tr>
 				<tr>
 					<th>대표자 구분</th>
 					<td>
 						<label>
-							<input class="rep_type" type="radio" name="rep_type" value="1">
+							<input class="rep_type" type="radio" name="rep_type" value="1" checked="checked">
 							<span>선관위원장</span>
 						</label>
 						<label>
@@ -74,7 +74,7 @@
 					<th>관리자 구분</th>
 					<td>
 						<label>
-							<input class="admin_type" type="radio" name="admin_type" value="1">
+							<input class="admin_type" type="radio" name="admin_type" value="1" checked="checked">
 							<span>선관위원장</span>
 						</label>
 						<label>
@@ -132,7 +132,7 @@
 					<th>투표 유형</th>
 					<td>
 						<label>
-							<input class="vote_type" type="radio" name="vote_type" class="vote_type" value="1">
+							<input class="vote_type" type="radio" name="vote_type" class="vote_type" value="1" checked="checked">
 							<span>동대표 선거</span>
 						</label>
 						<label>
@@ -267,6 +267,13 @@
 				
 				insertDate("voteBegin","${start_day.year}",${start_day.month},${start_day.day},"${start_day.hour}","${start_day.minute}");
 				insertDate("voteEnd","${end_day.year}",${end_day.month},${end_day.day},"${end_day.hour}","${end_day.minute}");
+				
+				
+				insertFilePath("regisNumCard",String.raw`${requestScope.file.regisNumCardPath}`);
+				insertFilePath("baseDoc",String.raw`${requestScope.file.baseDocPath}`);
+				insertFilePath("managerCertify",String.raw`${requestScope.file.managerCertifyPath}`);
+				insertFilePath("persAgreement",String.raw`${requestScope.file.persAgreementPath}`);
+				insertFilePath("usageAgreement",String.raw`${requestScope.file.usageAgreementPath}`);
 			})();
 			
 			function insertRadioType(className, type){
@@ -310,10 +317,19 @@
 				document.getElementById(id+"Hour").value = hour;
 				document.getElementById(id+"Min").value = min;
 			}
+			
+			function insertFilePath(id, fileName){
+				var realFileName = fileName.replace(id+"\\", "");
+				realFileName = realFileName.split("-")[1];
+				document.getElementById(id+"Path").value = fileName;
+				document.getElementById(id+"Download").innerHTML = realFileName;
+				
+			}
 		</script>
 	</c:if>
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/ValidateNumber.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/applyFormValidate.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/Validate.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/SendForm.js" type="text/javascript"></script>
 </body>
 </html>

@@ -7,7 +7,6 @@ function checkVoteAdmin() {
     if (xmlRequest.readyState == XMLHttpRequest.DONE) {
       if (xmlRequest.response !== "[]") {
         window.vote_num = JSON.parse(xmlRequest.response);
-        console.log(window.vote_num);
         alert("테스트 인증번호는 0000 입니다.");
       } else {
         alert("해당 관리자로 신청된 투표가 없습니다.");
@@ -24,3 +23,10 @@ function getPhoneNumber(tag) {
   var lastNum = document.getElementById(tag.id + "3").value;
   return areaCode + "-" + middleNum + "-" + lastNum;
 }
+
+(function() {
+  var inputTags = document.getElementById("admin_name");
+  inputTags.addEventListener("change", function() {
+    window.vote_num = undefined;
+  });
+})();

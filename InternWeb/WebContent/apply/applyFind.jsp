@@ -50,8 +50,9 @@
 		</div>
 	</div>
 	<myTag:Footer />
+	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/Validate.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/rlhvote/resources/script/ValidateNumber.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/VoteInformGetter.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/LookUpApplied.js" type="text/javascript"></script>
 </body>

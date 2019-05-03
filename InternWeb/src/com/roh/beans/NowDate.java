@@ -1,7 +1,6 @@
 package com.roh.beans;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 public class NowDate {
 	private int year;
@@ -14,7 +13,7 @@ public class NowDate {
 		this.year = now.getYear();
 		this.month = now.getMonthValue();
 		this.day = now.getDayOfMonth();
-		this.lastDayOfMonth = Calendar.getInstance().getActualMaximum(Calendar.DATE);
+		this.lastDayOfMonth = now.getMonth().length(now.isLeapYear());
 	}
 
 	public int getYear() {
