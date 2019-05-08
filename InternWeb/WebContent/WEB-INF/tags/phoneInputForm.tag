@@ -40,5 +40,5 @@
 		</select>
 	</c:when>
 </c:choose>
-<input class="numberInput" type="tel" id="${id}2" maxlength="4" style="ime-mode:disabled;">
-<input class="numberInput" type="text" id="${id}3" maxlength="4" style="ime-mode:disabled;">
+<input class="numberInput" type="tel" id="${id}2" maxlength="4" size="4" style="ime-mode:disabled;">
+<input class="numberInput" type="tel" id="${id}3" maxlength="4" size="4" style="ime-mode:disabled;">

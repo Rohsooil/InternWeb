@@ -27,27 +27,32 @@ function lookUpApplied() {
 }
 
 function makeAppliedTable(vote) {
-  var table = document.getElementById("appliedVote");
-  var row = document.createElement("tr");
-  var titleTag = makeElement("th", vote.title);
-  var voteDayTag = makeElement("td", vote.startDay + "~" + vote.endDay);
-  var applyDayTag = makeElement("td", vote.applyDay);
+  var table = document.getElementById("v_table");
+  var row = document.createElement("div");
+  row.className = "appendedRow v_tableRow";
 
-  var modify_td = document.createElement("td");
+  var titleTag = makeElement("div", vote.title);
+  var voteLengthTag = makeElement("div", vote.startDay + " ~ " + vote.endDay);
+  var applyDayTag = makeElement("div", vote.applyDay);
+  var modifyTag = document.createElement("div");
+
+  titleTag.classList.add("v_title");
+  voteLengthTag.classList.add("v_length");
+  applyDayTag.classList.add("v_title");
+  modifyTag.classList.add("v_function");
+
   var modify_btn = document.createElement("button");
 
   modify_btn.id = vote.vote_num;
   modify_btn.addEventListener("click", moveModifyPage);
   modify_btn.appendChild(document.createTextNode("조회/수정"));
 
-  modify_td.append(modify_btn);
+  modifyTag.append(modify_btn);
 
   row.append(titleTag);
-  row.append(voteDayTag);
+  row.append(voteLengthTag);
   row.append(applyDayTag);
-  row.append(modify_td);
-
-  row.className = "appendedRow";
+  row.append(modifyTag);
 
   table.append(row);
 }

@@ -9,7 +9,7 @@ import com.mysql.jdbc.Driver;
 
 public class DBConnector {
 	// private final String DRIVER = "com.mysql.jdbc.Driver";
-	private final String URL = "jdbc:mysql://localhost:3306/rlhvote?serverTimezone=UTC";
+	private final String URL = "jdbc:mysql://localhost:3306/rlhvote";
 	private final String USER = "root";
 	private final String PW = "root";
 

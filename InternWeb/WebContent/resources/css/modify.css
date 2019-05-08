@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.a_tableWrap {
+	width: 50%;
+	margin: 2% 25%;
+	padding: 10px 0px 10px 50px;
+	border: 1px solid #898989;
+}
+
+.a_table {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1%;
+}
+
+.a_tableRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.a_table .a_tableRow .a_title {
+	align-self: flex-start;
+	padding: 1% 0% 1% 5%;
+	flex: 1;
+}
+
+.a_table .a_tableRow .a_content {
+	flex: 2;
+}
+
+input {
+	height: 20px;
+}
+
+select {
+	height: 22px;
+}
+
+#authorizeBtn {
+	background-color: white;
+	border: 1px solid #898989;
+	padding: 3px;
+	cursor: pointer;
+}
+
+#authorizeBtn:hover {
+	background-color: #898989;
+	color: white;
+}
+
+.btnBox {
+	width: 40%;
+	padding: 0 30%;
+	margin-bottom: 30px;
+}
+
+#findBtn {
+	margin: 0 auto;
+	display: block;
+	width: 150px;
+	height: 35px;
+	background-color: #242424;
+	border: none;
+	color: white;
+	cursor: pointer;
+	display: block;
+}
+
+#findBtn:hover {
+	background-color: #FF2424;
+}
+
+#findBtn:active {
+	background-color: #FF2424;
+}
+
+.appliedVoteWrap {
+	width: 80%;
+	margin: 0 10%;
+	border: 1px solid #898989;
+}
+
+.appliedVoteWrap #v_table {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1%;
+}
+
+#v_table .v_tableRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+#v_table .v_tableRow .v_title {
+	align-self: flex-start;
+	flex: 1;
+}
+
+#v_table .v_tableRow .v_length {
+	flex: 2;
+}
+
+#v_table .v_tableRow .v_applyDay {
+	flex: 1;
+}
+
+#v_table .v_tableRow .v_function {
+	flex: 1;
+}
+
+#v_table .v_tableRow .v_function button {
+	background-color: white;
+	border: 1px solid #898989;
+	padding: 3px;
+	cursor: pointer;
+}
+
+#v_table .v_tableRow .v_function button:hover {
+	background-color: #898989;
+	color: white;
+}
