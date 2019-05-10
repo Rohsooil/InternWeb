@@ -1,12 +1,25 @@
 package com.roh.model;
 
-public class Admin {
+public class Admin implements DBModel {
 	private int type;
 	private String name;
 	private String rank;
 	private String tel;
 	private String phone;
 	private String email;
+
+	public Admin() {
+
+	}
+
+	public Admin(int type, String name, String rank, String tel, String phone, String email) {
+		this.type = type;
+		this.name = name;
+		this.rank = rank;
+		this.tel = tel;
+		this.phone = phone;
+		this.email = email;
+	}
 
 	public int getType() {
 		return type;
@@ -56,7 +69,8 @@ public class Admin {
 		this.email = email;
 	}
 
-	public void setInstance(int index, String data) {
+	@Override
+	public void setMember(int index, String data) {
 		switch (index) {
 		case 1:
 			setType(Integer.parseInt(data));
@@ -80,6 +94,36 @@ public class Admin {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public String getMember(int index) {
+		String member = null;
+
+		switch (index) {
+		case 1:
+			member = getType() + "";
+			break;
+		case 2:
+			member = getName() + "";
+			break;
+		case 3:
+			member = getRank();
+			break;
+		case 4:
+			member = getTel();
+			break;
+		case 5:
+			member = getPhone();
+			break;
+		case 6:
+			member = getEmail();
+			break;
+		default:
+			break;
+		}
+
+		return member;
 	}
 
 }

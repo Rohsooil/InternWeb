@@ -104,9 +104,9 @@ select {
 }
 
 #postBtn:hover {
-	background-color: #FF2424;
+	background-color: #2424FF;
 }
 
 #postBtn:active {
-	background-color: #FF2424;
+	background-color: #2424FF;
 }

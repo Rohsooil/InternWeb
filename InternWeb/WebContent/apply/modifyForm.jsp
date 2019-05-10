@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
 	<div class="f_box">
 		<br>
 		<div class="formWrap">
-			<form id="sendForm" action="/rlhvote/apply/application" accept-charset="UTF-8" method="post">
+			<form action="/rlhvote/apply/application" accept-charset="UTF-8" method="post">
 				<div>1. 아파트 정보</div>
 				<hr>
 				<div class="table">
@@ -30,7 +31,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" name="apart_name">
+								<input type="text" name="apart_name" value="${requestScope.apart.apartName }">
 							</span>
 						</div>
 					</div>
@@ -59,7 +60,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" id="register_num" class="numberInput" name="register_num">
+								<input type="text" id="register_num" class="numberInput" name="register_num" value="${requestScope.apart.registerNum}">
 								<button onclick="authorize(event)">인증</button>
 							</span>
 						</div>
@@ -89,7 +90,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" name="rep_name">
+								<input type="text" name="rep_name" value="${requestScope.apart.repName}">
 							</span>
 						</div>
 					</div>
@@ -117,7 +118,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" name="apart_address">
+								<input type="text" name="apart_address" value="${requestScope.apart.address}">
 							</span>
 						</div>
 					</div>
@@ -162,7 +163,7 @@
 						</div>
 						<div class="t_content" style="flex: 1.5">
 							<span>
-								<input type="text" name="admin_name">
+								<input type="text" name="admin_name" value="${requestScope.admin.name}">
 							</span>
 						</div>
 						<div class="t_title" style="flex: 1">
@@ -170,7 +171,7 @@
 						</div>
 						<div class="t_content" style="flex: 1.5">
 							<span>
-								<input type="text" name="admin_rank">
+								<input type="text" name="admin_rank" value="${requestScope.admin.rank}">
 							</span>
 						</div>
 					</div>
@@ -227,7 +228,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" name="vote_title" id="vote_title">
+								<input type="text" name="vote_title" id="vote_title" value="${requestScope.vote.title}">
 							</span>
 						</div>
 					</div>
@@ -261,7 +262,7 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input type="text" class="numberInput" name="vote_estimate" id="vote_estimate">
+								<input type="text" class="numberInput" name="vote_estimate" id="vote_estimate" value="${requestScope.vote.estimate}">
 							</span>
 						</div>
 					</div>
@@ -380,13 +381,104 @@
 				</div>
 
 				<br>
-				<button id="postBtn" type="button">신청하기</button>
-
+				<c:choose>
+					<c:when test="${param.id eq null}">
+						<button id="postBtn" type="button" onclick="saveForm()">신청하기</button>
+					</c:when>
+					<c:otherwise>
+						<button id="postBtn" type="button" onclick="modifyForm(${param.id})">수정하기</button>
+					</c:otherwise>
+				</c:choose>
 			</form>
 		</div>
 	</div>
 	<myTag:Footer />
-
+	<c:if test="${param.id ne null}">
+		<c:set var="vote_media" value="${requestScope.vote.media[0]}" />
+		<c:forEach var="media" items="${requestScope.vote.media}" begin="1">
+			<c:set var="vote_media" value="${vote_media},${media}" />
+		</c:forEach>
+		<c:set var="start_day" value="${requestScope.vote.startDay}" />
+		<c:set var="end_day" value="${requestScope.vote.endDay}" />
+		<script type="text/javascript">
+			(function(){
+				
+				
+				insertRadioType("apart_type", ${requestScope.apart.apartType});
+				insertRadioType("rep_type", ${requestScope.apart.repType});
+				insertRadioType("admin_type", ${requestScope.admin.type});
+				insertRadioType("vote_type", ${requestScope.apart.apartType});
+				
+				insertVoteMedia();
+				insertAdminEmail();
+				
+				insertTelNum("apart_tel","${requestScope.apart.tel}");
+				insertTelNum("apart_fax","${requestScope.apart.fax}");
+				insertTelNum("admin_tel","${requestScope.admin.tel}");
+				insertTelNum("admin_phone","${requestScope.admin.phone}");
+				
+				insertDate("voteStart","${start_day.year}",${start_day.month},${start_day.day},"${start_day.hour}","${start_day.minute}");
+				insertDate("voteEnd","${end_day.year}",${end_day.month},${end_day.day},"${end_day.hour}","${end_day.minute}");
+				
+				
+				insertFilePath("regisNumCard",String.raw`${requestScope.file.regisNumCardPath}`);
+				insertFilePath("baseDoc",String.raw`${requestScope.file.baseDocPath}`);
+				insertFilePath("managerCertify",String.raw`${requestScope.file.managerCertifyPath}`);
+				insertFilePath("persAgreement",String.raw`${requestScope.file.persAgreementPath}`);
+				insertFilePath("usageAgreement",String.raw`${requestScope.file.usageAgreementPath}`);
+			})();
+			
+			function insertRadioType(className, type){
+				var apart_type = document.getElementsByClassName(className);
+				Array.prototype.forEach.call(apart_type, (element) => {
+					if(element.value == type){
+						element.checked = "checked";
+					}
+				})
+			}
+			
+			function insertVoteMedia(){
+				var vote_meida = document.getElementsByName("vote_media");
+				var media_arr = [${vote_media}];
+				Array.prototype.forEach.call(vote_meida, element => {
+					if(media_arr.includes(element.value*=1)){
+						element.checked = "checked";
+					}
+				})
+			}
+			
+			function insertTelNum(id, number){
+				document.getElementById(id+"1").value = number.split("-")[0];
+				document.getElementById(id+"2").value = number.split("-")[1];
+				document.getElementById(id+"3").value = number.split("-")[2];
+			}
+			
+			function insertAdminEmail(){
+				var admin_mail = "${requestScope.admin.email}";
+				var mail_id = admin_mail.split("@")[0];
+				var mail_domain = admin_mail.split("@")[1];
+				
+				document.getElementById("admin_mail_id").value = mail_id;
+				document.getElementById("admin_mail_domain").value = mail_domain;
+			}
+			
+			function insertDate(id, year, month, day, hour, min){
+				document.getElementById(id+"Year").value = year;
+				document.getElementById(id+"Month").value = month;
+				document.getElementById(id+"Day").value = day;
+				document.getElementById(id+"Hour").value = hour;
+				document.getElementById(id+"Min").value = min;
+			}
+			
+			function insertFilePath(id, fileName){
+				var realFileName = fileName.replace(id+"\\", "");
+				realFileName = realFileName.split("-")[1];
+				document.getElementById(id+"Path").value = fileName;
+				document.getElementById(id+"Download").innerHTML = realFileName;
+				
+			}
+		</script>
+	</c:if>
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/SendForm.js" type="text/javascript"></script>

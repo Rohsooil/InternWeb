@@ -1,6 +1,6 @@
 package com.roh.model;
 
-public class Apartment {
+public class Apartment implements DBModel {
 	private String apartName;
 	private int apartType;
 	private String registerNum;
@@ -9,6 +9,21 @@ public class Apartment {
 	private String tel;
 	private String fax;
 	private String address;
+
+	public Apartment() {
+
+	}
+
+	public Apartment(String apartName, int apartType, String registerNum, String repName, int repType, String tel, String fax, String address) {
+		this.apartName = apartName;
+		this.apartType = apartType;
+		this.registerNum = registerNum;
+		this.repName = repName;
+		this.repType = repType;
+		this.tel = tel;
+		this.fax = fax;
+		this.address = address;
+	}
 
 	public String getApartName() {
 		return apartName;
@@ -74,7 +89,8 @@ public class Apartment {
 		this.address = address;
 	}
 
-	public void setInstance(int index, String data) {
+	@Override
+	public void setMember(int index, String data) {
 		switch (index) {
 		case 1:
 			setApartName(data);
@@ -103,6 +119,42 @@ public class Apartment {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public String getMember(int index) {
+		String member = null;
+
+		switch (index) {
+		case 1:
+			member = getApartName();
+			break;
+		case 2:
+			member = getApartType() + "";
+			break;
+		case 3:
+			member = getRegisterNum();
+			break;
+		case 4:
+			member = getRepType() + "";
+			break;
+		case 5:
+			member = getRepName();
+			break;
+		case 6:
+			member = getTel();
+			break;
+		case 7:
+			member = getFax();
+			break;
+		case 8:
+			member = getAddress();
+			break;
+		default:
+			break;
+		}
+
+		return member;
 	}
 
 }

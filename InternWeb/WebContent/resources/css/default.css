@@ -90,8 +90,8 @@ label .chk_box {
 }
 
 input[type="checkbox"]:checked+label .chk_box {
-	background-color: #FF7A7A;
-	border: 1px solid #FF7A7A;
+	background-color: #7A7AFF;
+	border: 1px solid #7A7AFF;
 }
 
 input[type="radio"] {
@@ -111,8 +111,8 @@ label .radio_btn {
 }
 
 input[type="radio"]:checked+label .radio_btn {
-	background-color: #FF7A7A;
-	border: 1px solid #FF7A7A;
+	background-color: #7A7AFF;
+	border: 1px solid #7A7AFF;
 }
 
 #footer .footerWrap {
@@ -134,5 +134,5 @@ input[type="radio"]:checked+label .radio_btn {
 #footer #footerCheck a {
 	margin-right: 15px;
 	font-weight: bold;
-	color: #BB0000;
+	color: #0000BB;
 }

@@ -12,21 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.roh.db.DBConnector;
-import com.roh.db.VoteAccessObject;
+import com.roh.db.query.VoteQueryMaker;
 import com.roh.dto.VoteDTO;
 
 @WebServlet("/apply/applicationList")
 public class ApplicationList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String[] voteNumArray = request.getParameter("vote_num").split(",");
 			VoteDTO[] voteDatas = new VoteDTO[voteNumArray.length];
-			
+
 			DBConnector dbConnector = new DBConnector();
-			VoteAccessObject vao = new VoteAccessObject();
+			VoteQueryMaker vao = new VoteQueryMaker();
 			for (int i = 0; i < voteNumArray.length; i++) {
 				voteDatas[i] = vao.selectAppliedVote(dbConnector, Integer.parseInt(voteNumArray[i]));
 				request.getSession().setAttribute(voteNumArray[i], "authorized");

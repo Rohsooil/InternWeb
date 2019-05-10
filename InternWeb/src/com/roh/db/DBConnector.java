@@ -3,8 +3,8 @@ package com.roh.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.mysql.jdbc.Driver;
 
 public class DBConnector {
@@ -16,20 +16,20 @@ public class DBConnector {
 	public Connection getConnection() throws SQLException {
 		new Driver();
 
-		Connection connection = DriverManager.getConnection(URL, USER, PW);
-
-		return connection;
+		return DriverManager.getConnection(URL, USER, PW);
 	}
 
-	public void close(Connection connection, PreparedStatement pstmt, ResultSet resultSet) throws SQLException {
-		if (resultSet != null) {
-			resultSet.close();
-		}
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (connection != null) {
-			connection.close();
-		}
+	public PreparedStatement getPreparedStatement(String sql, int flag) throws SQLException {
+		Connection connection = getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(sql, flag);
+
+		return pstmt;
+	}
+
+	public PreparedStatement getPreparedStatement(String sql) throws SQLException {
+		Connection connection = getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(sql);
+
+		return pstmt;
 	}
 }

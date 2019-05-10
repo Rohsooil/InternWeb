@@ -2,13 +2,24 @@ package com.roh.model;
 
 import com.roh.beans.Date;
 
-public class Vote {
+public class Vote implements DBModel {
 	private String title;
 	private int type;
 	private int estimate;
 	private Date startDay;
 	private Date endDay;
 	private String[] media;
+
+	public Vote() {
+	}
+
+	public Vote(String title, int type, int estimate, Date startDay, Date endDay) {
+		this.title = title;
+		this.type = type;
+		this.estimate = estimate;
+		this.startDay = startDay;
+		this.endDay = endDay;
+	}
 
 	public String getTitle() {
 		return title;
@@ -58,7 +69,8 @@ public class Vote {
 		this.estimate = estimate;
 	}
 
-	public void setInstance(int index, String data) {
+	@Override
+	public void setMember(int index, String data) {
 		switch (index) {
 		case 1:
 			setTitle(data);
@@ -78,5 +90,32 @@ public class Vote {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public String getMember(int index) {
+		String member = null;
+
+		switch (index) {
+		case 1:
+			member = getTitle();
+			break;
+		case 2:
+			member = getType() + "";
+			break;
+		case 3:
+			member = getEstimate() + "";
+			break;
+		case 4:
+			member = getStartDay().toString();
+			break;
+		case 5:
+			member = getEndDay().toString();
+			break;
+		default:
+			break;
+		}
+
+		return member;
 	}
 }

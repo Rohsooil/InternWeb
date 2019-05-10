@@ -54,8 +54,7 @@ public class ApplicationFile extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getPart("file") == null) {
 			response.sendError(405);
 		} else {

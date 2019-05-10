@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="myTag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -23,12 +22,14 @@
 			<div class="a_table">
 				<div class="a_tableRow">
 					<div class="a_title">이름</div>
-					<div class="a_content"><input type="text" id="admin_name" name="admin_name"></div>
+					<div class="a_content">
+						<input type="text" id="admin_name" name="admin_name">
+					</div>
 				</div>
 				<div class="a_tableRow">
 					<div class="a_title">휴대전화 번호</div>
 					<div class="a_content">
-						<myTag:phoneInputForm type="phone" id="admin_phone"/>
+						<myTag:phoneInputForm type="phone" id="admin_phone" />
 						<button id="authorizeBtn" onclick="checkVoteAdmin()">인증번호 요청</button>
 					</div>
 				</div>

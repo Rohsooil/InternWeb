@@ -16,12 +16,12 @@
 	justify-content: center;
 }
 
-#modifyBtn {
+#goApplyBtn {
 	border: 1px solid #878787;
 	padding: 8px;
 }
 
-#modifyBtn:hover {
+#goApplyBtn:hover {
 	background-color: #878787;
 	color: white;
 }
@@ -32,14 +32,14 @@
 	<myTag:Header />
 	<div class="banner">
 		<div id="banner_txt">
-			<h1>이용신청서 작성 완료</h1>
-			<h5>신청서 작성이 완료되었습니다.</h5>
+			<h1>죄송합니다...</h1>
+			<h5>서버에 오류가 생겼습니다. 금방 복구하겠습니다.</h5>
 		</div>
 		<img width="100%" alt="no banner" src="/rlhvote/resources/images/banner.png">
 	</div>
 	<div class="f_box" style="height: 500px;">
 		<div id="btnBox">
-			<a id="modifyBtn" href="http://localhost:8080/rlhvote/apply/applicationModify">방금 작성하신 내용을 확인하거나 수정이 필요하신가요?</a>
+			
 		</div>
 	</div>
 	<myTag:Footer />

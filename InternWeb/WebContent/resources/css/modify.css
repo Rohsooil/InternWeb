@@ -70,11 +70,11 @@ select {
 }
 
 #findBtn:hover {
-	background-color: #FF2424;
+	background-color: #2424FF;
 }
 
 #findBtn:active {
-	background-color: #FF2424;
+	background-color: #2424FF;
 }
 
 .appliedVoteWrap {

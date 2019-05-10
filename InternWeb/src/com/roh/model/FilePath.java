@@ -1,6 +1,6 @@
 package com.roh.model;
 
-public class FilePath {
+public class FilePath implements DBModel {
 	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
 
 	private String regisNumCardPath;
@@ -8,6 +8,18 @@ public class FilePath {
 	private String managerCertifyPath;
 	private String persAgreementPath;
 	private String usageAgreementPath;
+
+	public FilePath() {
+
+	}
+
+	public FilePath(String regisNumCardPath, String baseDocPath, String managerCertifyPath, String persAgreementPath, String usageAgreementPath) {
+		this.regisNumCardPath = regisNumCardPath;
+		this.baseDocPath = baseDocPath;
+		this.managerCertifyPath = managerCertifyPath;
+		this.persAgreementPath = persAgreementPath;
+		this.usageAgreementPath = usageAgreementPath;
+	}
 
 	public String getRegisNumCardPath() {
 		return regisNumCardPath;
@@ -49,7 +61,8 @@ public class FilePath {
 		this.usageAgreementPath = usageAgreementPath;
 	}
 
-	public void setInstance(int index, String data) {
+	@Override
+	public void setMember(int index, String data) {
 		switch (index) {
 		case 1:
 			setRegisNumCardPath(data);
@@ -69,6 +82,33 @@ public class FilePath {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public String getMember(int index) {
+		String member = null;
+
+		switch (index) {
+		case 1:
+			member = getRegisNumCardPath();
+			break;
+		case 2:
+			member = getBaseDocPath();
+			break;
+		case 3:
+			member = getManagerCertifyPath();
+			break;
+		case 4:
+			member = getPersAgreementPath();
+			break;
+		case 5:
+			member = getUsageAgreementPath();
+			break;
+		default:
+			break;
+		}
+
+		return member;
 	}
 
 }

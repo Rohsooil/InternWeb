@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ attribute name="id" required="false" %>
+<%@ attribute name="id" required="false"%>
 
 <jsp:useBean id="now" class="com.roh.beans.NowDate" scope="page" />
 
-<span id="${id}"> 
+<span id="${id}">
 	<input type="hidden" id="${id+='Date'}" name="${id+='Date'}">
 	<select id="${id+='Year'}">
 		<c:forEach begin="0" end="1" varStatus="i">
@@ -42,13 +42,13 @@
 	<span>일</span>
 	<select id="${id+='Hour'}">
 		<c:forEach begin="0" end="23" varStatus="i">
-			<option value="<fmt:formatNumber value="${i.index }" pattern="00"/>"><fmt:formatNumber value="${i.index }" pattern="00"/></option>
+			<option value="<fmt:formatNumber value="${i.index }" pattern="00"/>"><fmt:formatNumber value="${i.index }" pattern="00" /></option>
 		</c:forEach>
 	</select>
 	<span>시</span>
 	<select id="${id+='Min'}">
 		<c:forEach begin="0" end="11" varStatus="i">
-			<option value="<fmt:formatNumber value="${i.index*5 }" pattern="00"/>"><fmt:formatNumber value="${i.index*5 }" pattern="00"/></option>
+			<option value="<fmt:formatNumber value="${i.index*5 }" pattern="00"/>"><fmt:formatNumber value="${i.index*5 }" pattern="00" /></option>
 		</c:forEach>
 	</select>
 	<span>분</span>
