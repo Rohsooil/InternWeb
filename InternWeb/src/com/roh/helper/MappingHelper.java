@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.roh.beans.Date;
 import com.roh.exception.InputInvalidException;
-import com.roh.model.Admin;
-import com.roh.model.Apartment;
-import com.roh.model.FilePath;
-import com.roh.model.Vote;
-import com.roh.model.VoteMedia;
+import com.roh.model.application.Admin;
+import com.roh.model.application.Apartment;
+import com.roh.model.application.FilePath;
+import com.roh.model.application.Vote;
+import com.roh.model.application.VoteMedia;
 import com.roh.validation.Validator;
 
 public class MappingHelper {
@@ -26,10 +26,10 @@ public class MappingHelper {
 	public Vote getVote() throws InputInvalidException {
 
 		String title = validator.getSafeString("투표 제목", request.getParameter("vote_title"));
-		int type = validator.getSafeInt("투표 유형", request.getParameter("vote_type"));
+		String type = validator.getSafeString("투표 유형", request.getParameter("vote_type"));
 		int estimate = validator.getSafeInt("예상 투표자 수", request.getParameter("vote_estimate"));
 		Date startDay = validator.getSafeDate("투표 시작일", request.getParameter("voteStartDate"));
-		Date endDay = validator.getSafeDate("투표 시작일", request.getParameter("voteEndDate"));
+		Date endDay = validator.getSafeDate("투표 종료일", request.getParameter("voteEndDate"));
 
 		return new Vote(title, type, estimate, startDay, endDay);
 	}
@@ -50,7 +50,7 @@ public class MappingHelper {
 
 	public Admin getAdmin() throws InputInvalidException {
 
-		int type = validator.getSafeInt("관리자 구분", request.getParameter("admin_type"));
+		String type = validator.getSafeString("관리자 구분", request.getParameter("admin_type"));
 		String name = validator.getSafeString("관리자 이름", request.getParameter("admin_name"));
 		String rank = validator.getSafeString("관리자 직위", request.getParameter("admin_rank"));
 		String tel = validator.getSafeString("연락처(유선)", request.getParameter("admin_tel"));
@@ -63,9 +63,9 @@ public class MappingHelper {
 	public Apartment getApartment() throws InputInvalidException {
 
 		String apartName = validator.getSafeString("아파트 명", request.getParameter("apart_name"));
-		int apartType = validator.getSafeInt("아파트 구분", request.getParameter("apart_type"));
+		String apartType = validator.getSafeString("아파트 구분", request.getParameter("apart_type"));
 		String registerNum = validator.getSafeString("사업자 등록번호", request.getParameter("register_num"));
-		int repType = validator.getSafeInt("대표자 구분", request.getParameter("rep_type"));
+		String repType = validator.getSafeString("대표자 구분", request.getParameter("rep_type"));
 		String repName = validator.getSafeString("대표자 성명", request.getParameter("rep_name"));
 		String tel = validator.getSafeString("아파트 연락처", request.getParameter("apart_tel"));
 		String fax = validator.getSafeString("팩스", request.getParameter("apart_fax"));

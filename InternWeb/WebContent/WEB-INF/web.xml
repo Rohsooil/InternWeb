@@ -10,23 +10,13 @@
       <http-method>PUT</http-method>
       <http-method>OPTIONS</http-method>
     </web-resource-collection>
-    <web-resource-collection>
-      <web-resource-name>list</web-resource-name>
-      <url-pattern>/apply/applicationList</url-pattern>
-      <http-method>POST</http-method>
-    </web-resource-collection>
-    <web-resource-collection>
-      <web-resource-name>admin</web-resource-name>
-      <url-pattern>/apply/findAdmin</url-pattern>
-      <http-method>POST</http-method>
-    </web-resource-collection>
   </security-constraint>
   <error-page>
     <error-code>405</error-code>
     <location>/error/denyAccess.jsp</location>
   </error-page>
   <error-page>
-  	<exception-type>java.sql.SQLException</exception-type>
-  	<location>/error/serverError.jsp</location>
+    <exception-type>java.sql.SQLException</exception-type>
+    <location>/error/serverError.jsp</location>
   </error-page>
 </web-app>

@@ -41,12 +41,12 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="normal_apart" class="apart_type" type="radio" name="apart_type" value="1" checked="checked">
+								<input id="normal_apart" class="apart_type" type="radio" name="apart_type" value="일반 주택" checked="checked">
 								<label for="normal_apart">
 									<span class="radio_btn"></span>
 									<span>일반 주택</span>
 								</label>
-								<input id="lh_apart" class="apart_type" type="radio" name="apart_type" value="2">
+								<input id="lh_apart" class="apart_type" type="radio" name="apart_type" value="LH 임대 주택">
 								<label for="lh_apart">
 									<span class="radio_btn"></span>
 									<span>LH 임대 주택</span>
@@ -71,12 +71,12 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="rep1" class="rep_type" type="radio" name="rep_type" value="1" checked="checked">
+								<input id="rep1" class="rep_type" type="radio" name="rep_type" value="선관위원장" checked="checked">
 								<label for="rep1">
 									<span class="radio_btn"></span>
 									<span>선관위원장</span>
 								</label>
-								<input id="rep2" class="rep_type" type="radio" name="rep_type" value="2">
+								<input id="rep2" class="rep_type" type="radio" name="rep_type" value="입대의 회장">
 								<label for="rep2">
 									<span class="radio_btn"></span>
 									<span>입대의 회장</span>
@@ -134,22 +134,22 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="admin1" class="admin_type" type="radio" name="admin_type" value="1" checked="checked">
+								<input id="admin1" class="admin_type" type="radio" name="admin_type" value="선관위원장" checked="checked">
 								<label for="admin1">
 									<span class="radio_btn"></span>
 									<span>선관위원장</span>
 								</label>
-								<input id="admin2" class="admin_type" type="radio" name="admin_type" value="2">
+								<input id="admin2" class="admin_type" type="radio" name="admin_type" value="선관위원">
 								<label for="admin2">
 									<span class="radio_btn"></span>
 									<span>선관위원</span>
 								</label>
-								<input id="admin3" class="admin_type" type="radio" name="admin_type" value="3">
+								<input id="admin3" class="admin_type" type="radio" name="admin_type" value="관리소장">
 								<label for="admin3">
 									<span class="radio_btn"></span>
 									<span>관리소장</span>
 								</label>
-								<input id="admin4" class="admin_type" type="radio" name="admin_type" value="4">
+								<input id="admin4" class="admin_type" type="radio" name="admin_type" value="관리소 직원">
 								<label for="admin4">
 									<span class="radio_btn"></span>
 									<span>관리소 직원</span>
@@ -200,9 +200,9 @@
 						<div class="t_content">
 							<span>
 								<input type="hidden" id="admin_email" name="admin_email">
-								<input type="text" id="admin_mail_id">
+								<input type="text" id="admin_mail_id" value="${requestScope.admin.email.identifier}">
 								@
-								<input type="text" id="admin_mail_domain">
+								<input type="text" id="admin_mail_domain" value="${requestScope.admin.email.domain}">
 								<select>
 									<option value="direct">직접입력</option>
 									<option value="paran.com">파란</option>
@@ -238,17 +238,17 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="vote1" class="vote_type" type="radio" name="vote_type" class="vote_type" value="1" checked="checked">
+								<input id="vote1" class="vote_type" type="radio" name="vote_type" class="vote_type" value="동대표 선거" checked="checked">
 								<label for="vote1">
 									<span class="radio_btn"></span>
 									<span>동대표 선거</span>
 								</label>
-								<input id="vote2" class="vote_type" type="radio" name="vote_type" class="vote_type" value="2">
+								<input id="vote2" class="vote_type" type="radio" name="vote_type" class="vote_type" value="임원 투표">
 								<label for="vote2">
 									<span class="radio_btn"></span>
 									<span>임원 투표</span>
 								</label>
-								<input id="vote3" class="vote_type" type="radio" name="vote_type" class="vote_type" value="3">
+								<input id="vote3" class="vote_type" type="radio" name="vote_type" class="vote_type" value="기타 안건 투표">
 								<label for="vote3">
 									<span class="radio_btn"></span>
 									<span>기타 안건 투표</span>
@@ -321,8 +321,8 @@
 							<span>
 								<input type="hidden" id="regisNumCardPath" name="regisNumCardPath">
 								<label class="fileLabel" for="regisNumCard">고유번호증(사업자등록증) 등록</label>
-								<input type="file" class="fileInput" id="regisNumCard" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="regisNumCardDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="regisNumCard" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="regisNumCardDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -334,8 +334,8 @@
 							<span>
 								<input type="hidden" id="baseDocPath" name="baseDocPath">
 								<label class="fileLabel" for="baseDoc">투표신청 근거서류(회의록 등) 등록</label>
-								<input type="file" class="fileInput" id="baseDoc" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="baseDocDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="baseDoc" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="baseDocDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -347,8 +347,8 @@
 							<span>
 								<input type="hidden" id="managerCertifyPath" name="managerCertifyPath">
 								<label class="fileLabel" for="managerCertify">관리소장 직인 및 배치신고 증명서 등록</label>
-								<input type="file" class="fileInput" id="managerCertify" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="managerCertifyDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="managerCertify" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="managerCertifyDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -360,8 +360,8 @@
 							<span>
 								<input type="hidden" id="persAgreementPath" name="persAgreementPath">
 								<label class="fileLabel" for="persAgreement">개인정보수집 동의서 등록</label>
-								<input type="file" class="fileInput" id="persAgreement" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="persAgreementDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="persAgreement" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="persAgreementDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -373,114 +373,24 @@
 							<span>
 								<input type="hidden" id="usageAgreementPath" name="usageAgreementPath">
 								<label class="fileLabel" for="usageAgreement">이용 협약서 등록</label>
-								<input type="file" class="fileInput" id="usageAgreement" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="usageAgreementDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="usageAgreement" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="usageAgreementDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
 				</div>
 
 				<br>
-				<c:choose>
-					<c:when test="${param.id eq null}">
-						<button id="postBtn" type="button" onclick="saveForm()">신청하기</button>
-					</c:when>
-					<c:otherwise>
-						<button id="postBtn" type="button" onclick="modifyForm(${param.id})">수정하기</button>
-					</c:otherwise>
-				</c:choose>
+
+				<button id="postBtn" type="button">수정하기</button>
+
 			</form>
 		</div>
 	</div>
 	<myTag:Footer />
-	<c:if test="${param.id ne null}">
-		<c:set var="vote_media" value="${requestScope.vote.media[0]}" />
-		<c:forEach var="media" items="${requestScope.vote.media}" begin="1">
-			<c:set var="vote_media" value="${vote_media},${media}" />
-		</c:forEach>
-		<c:set var="start_day" value="${requestScope.vote.startDay}" />
-		<c:set var="end_day" value="${requestScope.vote.endDay}" />
-		<script type="text/javascript">
-			(function(){
-				
-				
-				insertRadioType("apart_type", ${requestScope.apart.apartType});
-				insertRadioType("rep_type", ${requestScope.apart.repType});
-				insertRadioType("admin_type", ${requestScope.admin.type});
-				insertRadioType("vote_type", ${requestScope.apart.apartType});
-				
-				insertVoteMedia();
-				insertAdminEmail();
-				
-				insertTelNum("apart_tel","${requestScope.apart.tel}");
-				insertTelNum("apart_fax","${requestScope.apart.fax}");
-				insertTelNum("admin_tel","${requestScope.admin.tel}");
-				insertTelNum("admin_phone","${requestScope.admin.phone}");
-				
-				insertDate("voteStart","${start_day.year}",${start_day.month},${start_day.day},"${start_day.hour}","${start_day.minute}");
-				insertDate("voteEnd","${end_day.year}",${end_day.month},${end_day.day},"${end_day.hour}","${end_day.minute}");
-				
-				
-				insertFilePath("regisNumCard",String.raw`${requestScope.file.regisNumCardPath}`);
-				insertFilePath("baseDoc",String.raw`${requestScope.file.baseDocPath}`);
-				insertFilePath("managerCertify",String.raw`${requestScope.file.managerCertifyPath}`);
-				insertFilePath("persAgreement",String.raw`${requestScope.file.persAgreementPath}`);
-				insertFilePath("usageAgreement",String.raw`${requestScope.file.usageAgreementPath}`);
-			})();
-			
-			function insertRadioType(className, type){
-				var apart_type = document.getElementsByClassName(className);
-				Array.prototype.forEach.call(apart_type, (element) => {
-					if(element.value == type){
-						element.checked = "checked";
-					}
-				})
-			}
-			
-			function insertVoteMedia(){
-				var vote_meida = document.getElementsByName("vote_media");
-				var media_arr = [${vote_media}];
-				Array.prototype.forEach.call(vote_meida, element => {
-					if(media_arr.includes(element.value*=1)){
-						element.checked = "checked";
-					}
-				})
-			}
-			
-			function insertTelNum(id, number){
-				document.getElementById(id+"1").value = number.split("-")[0];
-				document.getElementById(id+"2").value = number.split("-")[1];
-				document.getElementById(id+"3").value = number.split("-")[2];
-			}
-			
-			function insertAdminEmail(){
-				var admin_mail = "${requestScope.admin.email}";
-				var mail_id = admin_mail.split("@")[0];
-				var mail_domain = admin_mail.split("@")[1];
-				
-				document.getElementById("admin_mail_id").value = mail_id;
-				document.getElementById("admin_mail_domain").value = mail_domain;
-			}
-			
-			function insertDate(id, year, month, day, hour, min){
-				document.getElementById(id+"Year").value = year;
-				document.getElementById(id+"Month").value = month;
-				document.getElementById(id+"Day").value = day;
-				document.getElementById(id+"Hour").value = hour;
-				document.getElementById(id+"Min").value = min;
-			}
-			
-			function insertFilePath(id, fileName){
-				var realFileName = fileName.replace(id+"\\", "");
-				realFileName = realFileName.split("-")[1];
-				document.getElementById(id+"Path").value = fileName;
-				document.getElementById(id+"Download").innerHTML = realFileName;
-				
-			}
-		</script>
-	</c:if>
+
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/SendForm.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/apply/ApplyForm.js" type="text/javascript"></script>
 </body>
 </html>

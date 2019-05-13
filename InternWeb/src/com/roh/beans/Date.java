@@ -1,65 +1,75 @@
 package com.roh.beans;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Date {
-	private String year;
-	private String month;
-	private String day;
-	private String hour;
-	private String minute;
+	private int year;
+	private int month;
+	private int day;
+	private int hour;
+	private int min;
+	private int lastDayOfMonth;
+
+	public Date() {
+		LocalDateTime now = LocalDateTime.now();
+		this.year = now.getYear();
+		this.month = now.getMonthValue();
+		this.day = now.getDayOfMonth();
+		this.hour = now.getHour();
+		this.min = now.getMinute();
+		this.lastDayOfMonth = now.getMonth().length(LocalDate.now().isLeapYear());
+	}
 
 	public Date(String date) {
 		String[] date_arr = date.split(" ");
 
-		setYear(date_arr[0].split("-")[0]);
-		setMonth(date_arr[0].split("-")[1]);
-		setDay(date_arr[0].split("-")[2]);
+		this.year = Integer.parseInt(date_arr[0].split("-")[0]);
+		this.month = Integer.parseInt(date_arr[0].split("-")[1]);
+		this.day = Integer.parseInt(date_arr[0].split("-")[2]);
 
-		setHour(date_arr[1].split(":")[0]);
-		setMinute(date_arr[1].split(":")[1]);
+		this.hour = Integer.parseInt(date_arr[1].split(":")[0]);
+		this.min = Integer.parseInt(date_arr[1].split(":")[1]);
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	public String getMonth() {
+	public int getMonth() {
 		return month;
 	}
 
-	public void setMonth(String month) {
-		this.month = month;
-	}
-
-	public String getDay() {
+	public int getDay() {
 		return day;
 	}
 
-	public void setDay(String day) {
-		this.day = day;
-	}
-
-	public String getHour() {
+	public int getHour() {
 		return hour;
 	}
 
-	public void setHour(String hour) {
-		this.hour = hour;
+	public int getMin() {
+		return min;
 	}
 
-	public String getMinute() {
-		return minute;
-	}
-
-	public void setMinute(String minute) {
-		this.minute = minute;
+	public int getLastDayOfMonth() {
+		return lastDayOfMonth;
 	}
 
 	@Override
 	public String toString() {
-		return year + "-" + month + "-" + day + " " + hour + ":" + minute;
+		return year + "-" + month + "-" + day + " " + hour + ":" + min;
+	}
+
+	public int compare(Date d) {
+		LocalDateTime thisTime = LocalDateTime.of(year, month, day, hour, min);
+		LocalDateTime comapreTime = LocalDateTime.of(d.getYear(), d.getMonth(), d.getDay(), d.getHour(), d.getMin());
+
+		if (thisTime.isAfter(comapreTime)) {
+			return 1;
+		} else if (thisTime.isBefore(comapreTime)) {
+			return -1;
+		}
+		return 0;
 	}
 }

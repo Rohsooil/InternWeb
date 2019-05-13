@@ -4,7 +4,7 @@
 
 <%@ attribute name="id" required="false"%>
 
-<jsp:useBean id="now" class="com.roh.beans.NowDate" scope="page" />
+<jsp:useBean id="now" class="com.roh.beans.Date" scope="page" />
 
 <span id="${id}">
 	<input type="hidden" id="${id+='Date'}" name="${id+='Date'}">

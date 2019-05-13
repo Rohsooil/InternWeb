@@ -6,7 +6,7 @@
 <input type="hidden" name="${id}" id="${id}">
 <c:choose>
 	<c:when test="${type=='phone' }">
-		<select id="${id}1">
+		<select id="${id}Area">
 			<option value="010">010</option>
 			<option value="011">011</option>
 			<option value="016">016</option>
@@ -17,7 +17,7 @@
 		</select>
 	</c:when>
 	<c:when test="${type=='tel' }">
-		<select id="${id}1">
+		<select id="${id}Area">
 			<option value="02">02</option>
 			<option value="031">031</option>
 			<option value="032">032</option>
@@ -40,5 +40,5 @@
 		</select>
 	</c:when>
 </c:choose>
-<input class="numberInput" type="tel" id="${id}2" maxlength="4" size="4" style="ime-mode: disabled;">
-<input class="numberInput" type="tel" id="${id}3" maxlength="4" size="4" style="ime-mode: disabled;">
+<input class="numberInput" type="tel" id="${id}Country" maxlength="4" size="4" style="ime-mode: disabled;">
+<input class="numberInput" type="tel" id="${id}Individual" maxlength="4" size="4" style="ime-mode: disabled;">

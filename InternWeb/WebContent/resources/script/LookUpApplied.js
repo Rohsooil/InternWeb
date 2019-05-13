@@ -18,7 +18,7 @@ function lookUpApplied() {
             });
         }
     };
-    xmlHttpRequest.open("GET", "./applicationList?vote_num=" + window.vote_num, true);
+    xmlHttpRequest.open("GET", "./find?vote_num=" + window.vote_num, true);
     xmlHttpRequest.send(null);
 }
 
@@ -69,5 +69,5 @@ function makeElement(tagName, text) {
 }
 
 var moveModifyPage = function(event) {
-    location.href = "./application?id=" + event.target.id;
+    location.href = "./application/" + event.target.id;
 };

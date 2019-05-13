@@ -11,11 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.roh.exception.InputInvalidException;
 import com.roh.helper.MappingHelper;
-import com.roh.model.Admin;
-import com.roh.model.Apartment;
-import com.roh.model.FilePath;
-import com.roh.model.Vote;
-import com.roh.model.VoteMedia;
 
 @WebServlet("/apply/application")
 public class ApplicationForm extends HttpServlet {
@@ -31,17 +26,11 @@ public class ApplicationForm extends HttpServlet {
 		try {
 			MappingHelper helper = new MappingHelper(request);
 
-			Vote vote = helper.getVote();
-			Apartment apart = helper.getApartment();
-			Admin admin = helper.getAdmin();
-			FilePath filePath = helper.getFilePath();
-			VoteMedia voteMedia = helper.getVoteMedia();
-
-			request.setAttribute("Vote", vote);
-			request.setAttribute("Apart", apart);
-			request.setAttribute("Admin", admin);
-			request.setAttribute("FilePath", filePath);
-			request.setAttribute("Media", voteMedia);
+			request.setAttribute("Vote", helper.getVote());
+			request.setAttribute("Apart", helper.getApartment());
+			request.setAttribute("Admin", helper.getAdmin());
+			request.setAttribute("FilePath", helper.getFilePath());
+			request.setAttribute("Media", helper.getVoteMedia());
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/save");
 			dispatcher.forward(request, response);

@@ -169,6 +169,6 @@
 	</div>
 	<myTag:Footer />
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/rlhvote/resources/script/CheckPolicy.js"	type="text/javascript" charset="utf-8"></script>
+	<script src="/rlhvote/resources/script/policy/CheckPolicy.js"	type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@
 					<div class="a_title">휴대전화 번호</div>
 					<div class="a_content">
 						<myTag:phoneInputForm type="phone" id="admin_phone" />
-						<button id="authorizeBtn" onclick="checkVoteAdmin()">인증번호 요청</button>
+						<button id="authorizeBtn">인증번호 요청</button>
 					</div>
 				</div>
 				<div class="a_tableRow">
@@ -57,9 +57,8 @@
 	</div>
 	<myTag:Footer />
 	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/Validate.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/rlhvote/resources/script/VoteInformGetter.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/apply/auth/AuthorizeAdmin.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/LookUpApplied.js" type="text/javascript"></script>
 </body>
 </html>

@@ -28,6 +28,9 @@ public class Validator {
 		if (value == null || value.equals("")) {
 			throw new InputInvalidException(name);
 		}
+		if (new Date(value).compare(new Date()) < 0) {
+			throw new InputInvalidException(name);
+		}
 		return new Date(value);
 	}
 

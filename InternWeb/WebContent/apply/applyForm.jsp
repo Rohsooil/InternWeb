@@ -40,12 +40,12 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="normal_apart" class="apart_type" type="radio" name="apart_type" value="1" checked="checked">
+								<input id="normal_apart" class="apart_type" type="radio" name="apart_type" value="일반 주택" checked="checked">
 								<label for="normal_apart">
 									<span class="radio_btn"></span>
 									<span>일반 주택</span>
 								</label>
-								<input id="lh_apart" class="apart_type" type="radio" name="apart_type" value="2">
+								<input id="lh_apart" class="apart_type" type="radio" name="apart_type" value="LH 임대 주택">
 								<label for="lh_apart">
 									<span class="radio_btn"></span>
 									<span>LH 임대 주택</span>
@@ -70,12 +70,12 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="rep1" class="rep_type" type="radio" name="rep_type" value="1" checked="checked">
+								<input id="rep1" class="rep_type" type="radio" name="rep_type" value="선관위원장" checked="checked">
 								<label for="rep1">
 									<span class="radio_btn"></span>
 									<span>선관위원장</span>
 								</label>
-								<input id="rep2" class="rep_type" type="radio" name="rep_type" value="2">
+								<input id="rep2" class="rep_type" type="radio" name="rep_type" value="입대의 회장">
 								<label for="rep2">
 									<span class="radio_btn"></span>
 									<span>입대의 회장</span>
@@ -133,22 +133,22 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="admin1" class="admin_type" type="radio" name="admin_type" value="1" checked="checked">
+								<input id="admin1" class="admin_type" type="radio" name="admin_type" value="선관위원장" checked="checked">
 								<label for="admin1">
 									<span class="radio_btn"></span>
 									<span>선관위원장</span>
 								</label>
-								<input id="admin2" class="admin_type" type="radio" name="admin_type" value="2">
+								<input id="admin2" class="admin_type" type="radio" name="admin_type" value="선관위원">
 								<label for="admin2">
 									<span class="radio_btn"></span>
 									<span>선관위원</span>
 								</label>
-								<input id="admin3" class="admin_type" type="radio" name="admin_type" value="3">
+								<input id="admin3" class="admin_type" type="radio" name="admin_type" value="관리소장">
 								<label for="admin3">
 									<span class="radio_btn"></span>
 									<span>관리소장</span>
 								</label>
-								<input id="admin4" class="admin_type" type="radio" name="admin_type" value="4">
+								<input id="admin4" class="admin_type" type="radio" name="admin_type" value="관리소 직원">
 								<label for="admin4">
 									<span class="radio_btn"></span>
 									<span>관리소 직원</span>
@@ -199,9 +199,7 @@
 						<div class="t_content">
 							<span>
 								<input type="hidden" id="admin_email" name="admin_email">
-								<input type="text" id="admin_mail_id">
-								@
-								<input type="text" id="admin_mail_domain">
+								<input type="text" id="admin_mail_id"> @ <input type="text" id="admin_mail_domain">
 								<select>
 									<option value="direct">직접입력</option>
 									<option value="paran.com">파란</option>
@@ -237,17 +235,17 @@
 						</div>
 						<div class="t_content">
 							<span>
-								<input id="vote1" class="vote_type" type="radio" name="vote_type" class="vote_type" value="1" checked="checked">
+								<input id="vote1" class="vote_type" type="radio" name="vote_type" class="vote_type" value="동대표 선거" checked="checked">
 								<label for="vote1">
 									<span class="radio_btn"></span>
 									<span>동대표 선거</span>
 								</label>
-								<input id="vote2" class="vote_type" type="radio" name="vote_type" class="vote_type" value="2">
+								<input id="vote2" class="vote_type" type="radio" name="vote_type" class="vote_type" value="임원 투표">
 								<label for="vote2">
 									<span class="radio_btn"></span>
 									<span>임원 투표</span>
 								</label>
-								<input id="vote3" class="vote_type" type="radio" name="vote_type" class="vote_type" value="3">
+								<input id="vote3" class="vote_type" type="radio" name="vote_type" class="vote_type" value="기타 안건 투표">
 								<label for="vote3">
 									<span class="radio_btn"></span>
 									<span>기타 안건 투표</span>
@@ -320,8 +318,8 @@
 							<span>
 								<input type="hidden" id="regisNumCardPath" name="regisNumCardPath">
 								<label class="fileLabel" for="regisNumCard">고유번호증(사업자등록증) 등록</label>
-								<input type="file" class="fileInput" id="regisNumCard" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="regisNumCardDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="regisNumCard" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="regisNumCardDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -333,8 +331,8 @@
 							<span>
 								<input type="hidden" id="baseDocPath" name="baseDocPath">
 								<label class="fileLabel" for="baseDoc">투표신청 근거서류(회의록 등) 등록</label>
-								<input type="file" class="fileInput" id="baseDoc" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="baseDocDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="baseDoc" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="baseDocDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -346,8 +344,8 @@
 							<span>
 								<input type="hidden" id="managerCertifyPath" name="managerCertifyPath">
 								<label class="fileLabel" for="managerCertify">관리소장 직인 및 배치신고 증명서 등록</label>
-								<input type="file" class="fileInput" id="managerCertify" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="managerCertifyDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="managerCertify" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="managerCertifyDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -359,8 +357,8 @@
 							<span>
 								<input type="hidden" id="persAgreementPath" name="persAgreementPath">
 								<label class="fileLabel" for="persAgreement">개인정보수집 동의서 등록</label>
-								<input type="file" class="fileInput" id="persAgreement" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="persAgreementDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="persAgreement" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="persAgreementDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -372,8 +370,8 @@
 							<span>
 								<input type="hidden" id="usageAgreementPath" name="usageAgreementPath">
 								<label class="fileLabel" for="usageAgreement">이용 협약서 등록</label>
-								<input type="file" class="fileInput" id="usageAgreement" formenctype="multipart/form-data" oninput="sendFile(event,this)">
-								<a class="downloadFileBtn" id="usageAgreementDownload" onclick="downloadFile(event)" href="#"></a>
+								<input type="file" class="fileInput" id="usageAgreement" formenctype="multipart/form-data">
+								<a class="downloadFileBtn" id="usageAgreementDownload" href="#"></a>
 							</span>
 						</div>
 					</div>
@@ -389,6 +387,6 @@
 
 	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript"></script>
 	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/SendForm.js" type="text/javascript"></script>
+	<script src="/rlhvote/resources/script/apply/ApplyForm.js" type="text/javascript"></script>
 </body>
 </html>
