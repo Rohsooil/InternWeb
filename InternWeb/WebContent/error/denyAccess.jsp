@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/rlhvote/resources/css/default.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/default.css" type="text/css">
 <style>
 #btnBox {
 	margin-top: 80px;
@@ -35,14 +35,14 @@
 			<h1>Method Not Allowed (405)</h1>
 			<h5>그렇게 접근하시면 안됩니다..</h5>
 		</div>
-		<img width="100%" alt="no banner" src="/rlhvote/resources/images/banner.png">
+		<img width="100%" alt="no banner" src="/rhvote/resources/images/banner.png">
 	</div>
 	<div class="f_box" style="height: 500px;">
 		<div id="btnBox">
-			<a id="goApplyBtn" href="http://localhost:8080/rlhvote/apply/applyForm">투표 이용신청서를 작성하시겠어요?</a>
+			<a id="goApplyBtn" href="http://localhost:8080/rhvote/apply/applyForm">투표 이용신청서를 작성하시겠어요?</a>
 		</div>
 	</div>
 	<myTag:Footer />
-	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/rhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

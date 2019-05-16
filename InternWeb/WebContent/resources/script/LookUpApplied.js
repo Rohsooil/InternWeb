@@ -28,13 +28,13 @@ function makeAppliedTable(vote) {
     row.className = "appendedRow v_tableRow";
 
     var titleTag = makeElement("div", vote.title);
-    var voteLengthTag = makeElement("div", vote.startDay + " ~ " + vote.endDay);
-    var applyDayTag = makeElement("div", vote.applyDay);
+    var voteLengthTag = makeElement("div", vote.startDate + " ~ " + vote.endDate);
+    var applyDateTag = makeElement("div", vote.applyDate);
     var modifyTag = document.createElement("div");
 
     titleTag.classList.add("v_title");
     voteLengthTag.classList.add("v_length");
-    applyDayTag.classList.add("v_title");
+    applyDateTag.classList.add("v_title");
     modifyTag.classList.add("v_function");
 
     var modify_btn = document.createElement("button");
@@ -47,7 +47,7 @@ function makeAppliedTable(vote) {
 
     row.append(titleTag);
     row.append(voteLengthTag);
-    row.append(applyDayTag);
+    row.append(applyDateTag);
     row.append(modifyTag);
 
     table.append(row);

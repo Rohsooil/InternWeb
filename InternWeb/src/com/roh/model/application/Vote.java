@@ -1,25 +1,24 @@
 package com.roh.model.application;
 
-import com.roh.beans.Date;
-import com.roh.model.ApplicationModel;
+import com.roh.forms.Date;
 
 public class Vote implements ApplicationModel {
 	private String title;
 	private String type;
 	private int estimate;
-	private Date startDay;
-	private Date endDay;
+	private Date startDate;
+	private Date endDate;
 
 	public Vote() {
-	
+
 	}
-	
-	public Vote(String title, String type, int estimate, Date startDay, Date endDay) {
+
+	public Vote(String title, String type, int estimate, Date startDate, Date endDate) {
 		this.title = title;
 		this.type = type;
 		this.estimate = estimate;
-		this.startDay = startDay;
-		this.endDay = endDay;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	public String getTitle() {
@@ -38,77 +37,28 @@ public class Vote implements ApplicationModel {
 		this.type = type;
 	}
 
-	public Date getStartDay() {
-		return startDay;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setStartDay(Date startDay) {
-		this.startDay = startDay;
+	public void setStartDate(String startDate) {
+		this.startDate = new Date(startDate);
 	}
 
-	public Date getEndDay() {
-		return endDay;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setEndDay(Date endDay) {
-		this.endDay = endDay;
+	public void setEndDate(String endDate) {
+		this.endDate = new Date(endDate);
 	}
 
 	public int getEstimate() {
 		return estimate;
 	}
 
-	public void setEstimate(int estimate) {
-		this.estimate = estimate;
+	public void setEstimate(String estimate) {
+		this.estimate = Integer.parseInt(estimate);
 	}
 
-	@Override
-	public void setMember(int index, String data) {
-		switch (index) {
-		case 1:
-			setTitle(data);
-			break;
-		case 2:
-			setType(data);
-			break;
-		case 3:
-			setEstimate(Integer.parseInt(data));
-			break;
-		case 4:
-			setStartDay(new Date(data));
-			break;
-		case 5:
-			setEndDay(new Date(data));
-			break;
-		default:
-			break;
-		}
-	}
-
-	@Override
-	public String getMember(int index) {
-		String member = null;
-
-		switch (index) {
-		case 1:
-			member = getTitle();
-			break;
-		case 2:
-			member = getType();
-			break;
-		case 3:
-			member = getEstimate() + "";
-			break;
-		case 4:
-			member = getStartDay().toString();
-			break;
-		case 5:
-			member = getEndDay().toString();
-			break;
-		default:
-			break;
-		}
-
-		return member;
-	}
 }

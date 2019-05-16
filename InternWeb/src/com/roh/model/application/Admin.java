@@ -1,13 +1,12 @@
 package com.roh.model.application;
 
-import com.roh.beans.Email;
-import com.roh.beans.TelePhone;
-import com.roh.model.ApplicationModel;
+import com.roh.forms.Email;
+import com.roh.forms.TelePhone;
 
 public class Admin implements ApplicationModel {
 	private String type;
 	private String name;
-	private String rank;
+	private String position;
 	private TelePhone tel;
 	private TelePhone phone;
 	private Email email;
@@ -16,13 +15,13 @@ public class Admin implements ApplicationModel {
 
 	}
 
-	public Admin(String type, String name, String rank, String tel, String phone, String email) {
+	public Admin(String type, String name, String position, TelePhone tel, TelePhone phone, Email email) {
 		this.type = type;
 		this.name = name;
-		this.rank = rank;
-		this.tel = new TelePhone(tel);
-		this.phone = new TelePhone(phone);
-		this.email = new Email(email);
+		this.position = position;
+		this.tel = tel;
+		this.phone = phone;
+		this.email = email;
 	}
 
 	public String getType() {
@@ -41,12 +40,12 @@ public class Admin implements ApplicationModel {
 		this.name = name;
 	}
 
-	public String getRank() {
-		return rank;
+	public String getPosition() {
+		return position;
 	}
 
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 	public TelePhone getTel() {
@@ -71,63 +70,6 @@ public class Admin implements ApplicationModel {
 
 	public void setEmail(String email) {
 		this.email = new Email(email);
-	}
-
-	@Override
-	public void setMember(int index, String data) {
-		switch (index) {
-		case 1:
-			setType(data);
-			break;
-		case 2:
-			setName(data);
-			break;
-		case 3:
-			setRank(data);
-			break;
-		case 4:
-			setTel(data);
-			break;
-		case 5:
-			setPhone(data);
-			break;
-		case 6:
-			setEmail(data);
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	@Override
-	public String getMember(int index) {
-		String member = null;
-
-		switch (index) {
-		case 1:
-			member = getType();
-			break;
-		case 2:
-			member = getName();
-			break;
-		case 3:
-			member = getRank();
-			break;
-		case 4:
-			member = getTel().toString();
-			break;
-		case 5:
-			member = getPhone().toString();
-			break;
-		case 6:
-			member = getEmail().toString();
-			break;
-		default:
-			break;
-		}
-
-		return member;
 	}
 
 }

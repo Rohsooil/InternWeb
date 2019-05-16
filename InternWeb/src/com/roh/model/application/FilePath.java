@@ -1,116 +1,65 @@
 package com.roh.model.application;
 
-import com.roh.model.ApplicationModel;
-
 public class FilePath implements ApplicationModel {
-	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
 
-	private String regisNumCardPath;
-	private String baseDocPath;
-	private String managerCertifyPath;
-	private String persAgreementPath;
-	private String usageAgreementPath;
+	private String regisNumCard;
+	private String baseDoc;
+	private String managerCertify;
+	private String persAgreement;
+	private String usageAgreement;
+
+	public static final String filePath = "C:\\Users\\kev\\Documents\\files\\";
 
 	public FilePath() {
 
 	}
 
-	public FilePath(String regisNumCardPath, String baseDocPath, String managerCertifyPath, String persAgreementPath, String usageAgreementPath) {
-		this.regisNumCardPath = regisNumCardPath;
-		this.baseDocPath = baseDocPath;
-		this.managerCertifyPath = managerCertifyPath;
-		this.persAgreementPath = persAgreementPath;
-		this.usageAgreementPath = usageAgreementPath;
+	public FilePath(String regisNumCard, String baseDoc, String managerCertify, String persAgreement, String usageAgreement) {
+		this.regisNumCard = regisNumCard;
+		this.baseDoc = baseDoc;
+		this.managerCertify = managerCertify;
+		this.persAgreement = persAgreement;
+		this.usageAgreement = usageAgreement;
 	}
 
-	public String getRegisNumCardPath() {
-		return regisNumCardPath;
+	public String getRegisNumCard() {
+		return regisNumCard;
 	}
 
-	public void setRegisNumCardPath(String regisNumCardPath) {
-		this.regisNumCardPath = regisNumCardPath;
+	public void setRegisNumCard(String regisNumCard) {
+		this.regisNumCard = regisNumCard;
 	}
 
-	public String getBaseDocPath() {
-		return baseDocPath;
+	public String getBaseDoc() {
+		return baseDoc;
 	}
 
-	public void setBaseDocPath(String baseDocPath) {
-		this.baseDocPath = baseDocPath;
+	public void setBaseDoc(String baseDoc) {
+		this.baseDoc = baseDoc;
 	}
 
-	public String getManagerCertifyPath() {
-		return managerCertifyPath;
+	public String getManagerCertify() {
+		return managerCertify;
 	}
 
-	public void setManagerCertifyPath(String managerCertifyPath) {
-		this.managerCertifyPath = managerCertifyPath;
+	public void setManagerCertify(String managerCertify) {
+		this.managerCertify = managerCertify;
 	}
 
-	public String getPersAgreementPath() {
-		return persAgreementPath;
+	public String getPersAgreement() {
+		return persAgreement;
 	}
 
-	public void setPersAgreementPath(String persAgreementPath) {
-		this.persAgreementPath = persAgreementPath;
+	public void setPersAgreement(String persAgreement) {
+		this.persAgreement = persAgreement;
 	}
 
-	public String getUsageAgreementPath() {
-		return usageAgreementPath;
+	public String getUsageAgreement() {
+		return usageAgreement;
 	}
 
-	public void setUsageAgreementPath(String usageAgreementPath) {
-		this.usageAgreementPath = usageAgreementPath;
-	}
-
-	@Override
-	public void setMember(int index, String data) {
-		switch (index) {
-		case 1:
-			setRegisNumCardPath(data);
-			break;
-		case 2:
-			setBaseDocPath(data);
-			break;
-		case 3:
-			setManagerCertifyPath(data);
-			break;
-		case 4:
-			setPersAgreementPath(data);
-			break;
-		case 5:
-			setUsageAgreementPath(data);
-			break;
-		default:
-			break;
-		}
-	}
-
-	@Override
-	public String getMember(int index) {
-		String member = null;
-
-		switch (index) {
-		case 1:
-			member = getRegisNumCardPath();
-			break;
-		case 2:
-			member = getBaseDocPath();
-			break;
-		case 3:
-			member = getManagerCertifyPath();
-			break;
-		case 4:
-			member = getPersAgreementPath();
-			break;
-		case 5:
-			member = getUsageAgreementPath();
-			break;
-		default:
-			break;
-		}
-
-		return member;
+	public void setUsageAgreement(String usageAgreement) {
+		this.usageAgreement = usageAgreement;
 	}
 
 }

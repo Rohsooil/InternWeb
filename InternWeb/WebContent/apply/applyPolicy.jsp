@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/rlhvote/resources/css/default.css" type="text/css">
-<link rel="stylesheet" href="/rlhvote/resources/css/policy.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/default.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/policy.css" type="text/css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 			<h1>이용신청서 작성</h1>
 			<h5>이용신청서를 작성하시려면 아래의 확인 상황과 개인정보처리방침을 모두 확인하시기 바랍니다.</h5>
 		</div>
-		<img width="100%" alt="no banner" src="/rlhvote/resources/images/banner.png">
+		<img width="100%" alt="no banner" src="/rhvote/resources/images/banner.png">
 	</div>
 	<div class="f_box">
 		<div class="policy">
@@ -168,7 +168,7 @@
 		</div>
 	</div>
 	<myTag:Footer />
-	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/rlhvote/resources/script/policy/CheckPolicy.js"	type="text/javascript" charset="utf-8"></script>
+	<script src="/rhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/rhvote/resources/script/policy/CheckPolicy.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

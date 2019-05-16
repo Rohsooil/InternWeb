@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/rlhvote/resources/css/default.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/default.css" type="text/css">
 <style>
 #btnBox {
 	margin-top: 80px;
@@ -35,7 +35,7 @@
 			<h1>죄송합니다...</h1>
 			<h5>서버에 오류가 생겼습니다. 금방 복구하겠습니다.</h5>
 		</div>
-		<img width="100%" alt="no banner" src="/rlhvote/resources/images/banner.png">
+		<img width="100%" alt="no banner" src="/rhvote/resources/images/banner.png">
 	</div>
 	<div class="f_box" style="height: 500px;">
 		<div id="btnBox">
@@ -43,6 +43,6 @@
 		</div>
 	</div>
 	<myTag:Footer />
-	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/rhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

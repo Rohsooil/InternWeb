@@ -1,7 +1,12 @@
 package com.roh.db.query;
 
-public interface ApplicationQuery extends Query {
-	default String getSelectQuery(int voteNum) {
+public interface ApplicationQuery {
+
+	String getSelectQuery(int voteNum);
+
+	String getUpdateQuery(int voteNum);
+
+	default String getInsertQuery() {
 		return null;
 	}
 
@@ -9,7 +14,4 @@ public interface ApplicationQuery extends Query {
 		return null;
 	}
 
-	default String getUpdateQuery(int voteNum) {
-		return null;
-	}
 }

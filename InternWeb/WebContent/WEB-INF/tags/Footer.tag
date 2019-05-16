@@ -3,7 +3,7 @@
 	<hr>
 	<div class="footerWrap">
 		<div>
-			<img src="/rlhvote/resources/images/f_logo.png">
+			<img src="/rhvote/resources/images/f_logo.png">
 		</div>
 		<div>
 			<p id="footerCheck">

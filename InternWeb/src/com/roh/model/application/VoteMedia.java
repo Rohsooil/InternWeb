@@ -1,7 +1,5 @@
 package com.roh.model.application;
 
-import com.roh.model.ApplicationModel;
-
 public class VoteMedia implements ApplicationModel {
 	private int pc;
 	private int smartPhone;
@@ -9,86 +7,39 @@ public class VoteMedia implements ApplicationModel {
 	private int onSite;
 
 	public VoteMedia() {
-	
+
 	}
-	
+
 	public int getPc() {
 		return pc;
 	}
 
-	public void setPc(int pc) {
-		this.pc = pc;
+	public void setPc(String pc) {
+		this.pc = Integer.parseInt(pc);
 	}
 
 	public int getSmartPhone() {
 		return smartPhone;
 	}
 
-	public void setSmartPhone(int smartPhone) {
-		this.smartPhone = smartPhone;
+	public void setSmartPhone(String smartPhone) {
+		this.smartPhone = Integer.parseInt(smartPhone);
 	}
 
 	public int getSms() {
 		return sms;
 	}
 
-	public void setSms(int sms) {
-		this.sms = sms;
+	public void setSms(String sms) {
+		this.sms = Integer.parseInt(sms);
 	}
 
 	public int getOnSite() {
 		return onSite;
 	}
 
-	public void setOnSite(int onSite) {
-		this.onSite = onSite;
-	}
-
-	@Override
-	public String getMember(int index) {
-		String result = null;
-		switch (index) {
-		case 1:
-			result = getPc() + "";
-			break;
-		case 2:
-			result = getSmartPhone() + "";
-			break;
-		case 3:
-			result = getSms() + "";
-			break;
-		case 4:
-			result = getOnSite() + "";
-			break;
-		default:
-			break;
-		}
-		return result;
-	}
-
-	public void setMember(int index, int data) {
-		switch (index) {
-		case 1:
-			setPc(data);
-			break;
-		case 2:
-			setSmartPhone(data);
-			break;
-		case 3:
-			setSms(data);
-			break;
-		case 4:
-			setOnSite(data);
-			break;
-		default:
-			break;
-
-		}
-	}
-
-	@Override
-	public void setMember(int index, String data) {
-		setMember(index, Integer.parseInt(data));
+	public void setOnSite(String onSite) {
+		this.onSite = Integer.parseInt(onSite);
 	}
 
 }

@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/rlhvote/resources/css/default.css" type="text/css">
-<link rel="stylesheet" href="/rlhvote/resources/css/modify.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/default.css" type="text/css">
+<link rel="stylesheet" href="/rhvote/resources/css/modify.css" type="text/css">
 </head>
 <body>
 	<myTag:Header />
@@ -15,7 +15,7 @@
 			<h1>이용신청서 조회</h1>
 			<h5>신청하셨던 이용신청서의 내용을 수정 또는 인쇄하시려면, 아래의 관리자 정보로 인증하시기 바랍니다.</h5>
 		</div>
-		<img width="100%" alt="no banner" src="/rlhvote/resources/images/banner.png">
+		<img width="100%" alt="no banner" src="/rhvote/resources/images/banner.png">
 	</div>
 	<div class="f_box" style="height: 700px;">
 		<div class="a_tableWrap">
@@ -56,9 +56,8 @@
 		</div>
 	</div>
 	<myTag:Footer />
-	<script src="/rlhvote/resources/script/module/require.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/rlhvote/resources/script/apply/auth/AuthorizeAdmin.js" type="text/javascript"></script>
-	<script src="/rlhvote/resources/script/LookUpApplied.js" type="text/javascript"></script>
+	<script src="/rhvote/resources/script/DropdownMenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/rhvote/resources/script/apply/auth/AuthorizeAdmin.js" type="module"></script>
+	<script src="/rhvote/resources/script/LookUpApplied.js" type="text/javascript"></script>
 </body>
 </html>

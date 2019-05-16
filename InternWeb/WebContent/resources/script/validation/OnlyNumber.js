@@ -1,15 +1,10 @@
-define(function() {
-    var numberInputs = document.getElementsByClassName("numberInput");
-
-    function onlyNumber() {
-        Array.prototype.forEach.call(numberInputs, element => {
-            element.addEventListener("keyup", () => {
-                element.value = element.value.replace(/[^0-9]/gi, "");
-            });
+function onlyNumber() {
+    let numberInputs = document.getElementsByClassName("numberInput");
+    Array.prototype.forEach.call(numberInputs, element => {
+        element.addEventListener("keyup", () => {
+            element.value = element.value.replace(/[^0-9]/gi, "");
         });
-    }
+    });
+}
 
-    return {
-        onlyNumber: onlyNumber
-    };
-});
+export { onlyNumber };

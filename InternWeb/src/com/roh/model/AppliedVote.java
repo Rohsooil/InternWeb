@@ -3,9 +3,9 @@ package com.roh.model;
 public class AppliedVote {
 	private int num;
 	private String title;
-	private String startDay;
-	private String endDay;
-	private String applyDay;
+	private String startDate;
+	private String endDate;
+	private String applyDate;
 
 	public int getNum() {
 		return num;
@@ -23,28 +23,28 @@ public class AppliedVote {
 		this.title = title;
 	}
 
-	public String getStartDay() {
-		return startDay;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStartDay(String startDay) {
-		this.startDay = startDay;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getEndDay() {
-		return endDay;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setEndDay(String endDay) {
-		this.endDay = endDay;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
-	public String getApplyDay() {
-		return applyDay;
+	public String getApplyDate() {
+		return applyDate;
 	}
 
-	public void setApplyDay(String applyDay) {
-		this.applyDay = applyDay;
+	public void setApplyDate(String applyDate) {
+		this.applyDate = applyDate;
 	}
 
 	public void setInstance(int index, String data) {
@@ -56,13 +56,13 @@ public class AppliedVote {
 			setTitle(data);
 			break;
 		case 3:
-			setStartDay(data);
+			setStartDate(data);
 			break;
 		case 4:
-			setEndDay(data);
+			setEndDate(data);
 			break;
 		case 5:
-			setApplyDay(data);
+			setApplyDate(data);
 			break;
 		default:
 			break;
@@ -73,8 +73,8 @@ public class AppliedVote {
 	public String toString() {
 		return "{ \"vote_num\" : \"" + num + "\" ,"
 						+ "\"title\" : \"" + title + "\","
-						+ " \"startDay\" : \"" + startDay + "\","
-						+ " \"endDay\" : \"" + endDay + "\","
-						+ " \"applyDay\" : \"" + applyDay + "\" }";
+						+ " \"startDate\" : \"" + startDate + "\","
+						+ " \"endDate\" : \"" + endDate + "\","
+						+ " \"applyDate\" : \"" + applyDate + "\" }";
 	}
 }
