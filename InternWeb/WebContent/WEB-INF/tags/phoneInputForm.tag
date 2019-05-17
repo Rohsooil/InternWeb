@@ -3,7 +3,7 @@
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags"%>
 <%@ attribute name='type' required="true"%>
 <%@ attribute name='id' required="true"%>
-<%@ attribute name='modValue' required="false" type="com.roh.beans.TelePhone"%>
+<%@ attribute name='modValue' required="false" type="com.roh.forms.TelePhone"%>
 
 <jsp:useBean id="ArCode" class="com.roh.forms.AreaCode" scope="page" />
 

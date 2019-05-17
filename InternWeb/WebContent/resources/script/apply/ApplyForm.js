@@ -1,8 +1,8 @@
-import * as DateFormatter from "../formatter/DateFormatter.js";
-import * as EmailFormatter from "../formatter/EmailFormatter.js";
-import * as TelePhoneFormatter from "../formatter/TelePhoneFormatter.js";
-import * as OnlyNumber from "../validation/OnlyNumber.js";
-import * as File from "../file/File.js";
+import * as DateFormatter from "../module/formatter/DateFormatter.js";
+import * as EmailFormatter from "../module/formatter/EmailFormatter.js";
+import * as TelePhoneFormatter from "../module/formatter/TelePhoneFormatter.js";
+import * as OnlyNumber from "../module/validation/OnlyNumber.js";
+import * as File from "../module/file/File.js";
 
 (function() {
     OnlyNumber.onlyNumber();
@@ -19,6 +19,11 @@ import * as File from "../file/File.js";
 
     let postBtn = document.getElementById("postBtn");
     postBtn.addEventListener("click", saveForm);
+
+    let authBtn = document.getElementById("authBtn");
+    if (authBtn !== null) {
+        authBtn.addEventListener("click", authorize);
+    }
 })();
 
 function saveForm() {
@@ -71,7 +76,7 @@ function setHiddenData(form) {
 
 function authorize(event) {
     event.preventDefault();
-    if (document.getElementById("register_num").value !== "0000") {
+    if (document.getElementById("apart_registerNum").value !== "0000") {
         alert("0000을 입력해주시면됩니다.");
     } else {
         event.target.style.visibility = "hidden";

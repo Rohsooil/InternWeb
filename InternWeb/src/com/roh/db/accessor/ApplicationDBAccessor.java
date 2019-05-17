@@ -12,7 +12,7 @@ import com.roh.db.query.ApplicationQuery;
 import com.roh.helper.ModelMethodCaller;
 import com.roh.model.application.ApplicationModel;
 
-public class ApplicationAccessor extends DBAccessor {
+public class ApplicationDBAccessor extends DBAccessor {
 
 	public void insert(ApplicationQuery query, int voteNum, ApplicationModel model) throws ServletException {
 		execute(query.getInsertQuery(voteNum), model);

@@ -64,7 +64,9 @@
 						<div class="t_content">
 							<span>
 								<input type="text" id="apart_registerNum" class="numberInput" name="apart_registerNum" value="${requestScope.apart.registerNum}">
-								<button onclick="authorize(event)">인증</button>
+								<c:if test="${requestScope.apart.registerNum eq null}">
+									<button id="authBtn">인증</button>
+								</c:if>
 							</span>
 						</div>
 					</div>

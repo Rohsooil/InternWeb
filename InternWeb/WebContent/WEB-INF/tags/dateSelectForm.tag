@@ -4,7 +4,7 @@
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags"%>
 
 <%@ attribute name="id" required="true"%>
-<%@ attribute name="modValue" required="false" type="com.roh.beans.Date"%>
+<%@ attribute name="modValue" required="false" type="com.roh.forms.Date"%>
 
 <jsp:useBean id="now" class="com.roh.forms.Date" scope="page" />
 <jsp:useBean id="String" class="java.lang.String" scope="page" />

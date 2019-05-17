@@ -3,7 +3,7 @@ package com.roh.service;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import com.roh.db.accessor.ApplicationAccessor;
+import com.roh.db.accessor.ApplicationDBAccessor;
 import com.roh.db.query.AdminQuery;
 import com.roh.db.query.ApartQuery;
 import com.roh.db.query.FilePathQuery;
@@ -20,7 +20,7 @@ public class SelectService implements Service {
 	public void doService(HttpServletRequest request) throws ServletException {
 		int voteNum = Integer.parseInt(request.getPathInfo().replace("/", ""));
 
-		ApplicationAccessor accessor = new ApplicationAccessor();
+		ApplicationDBAccessor accessor = new ApplicationDBAccessor();
 
 		Vote vote = (Vote) accessor.select(new VoteQuery(), voteNum, Vote.class);
 		VoteMedia voteMedia = (VoteMedia) accessor.select(new VoteMediaQuery(), voteNum, VoteMedia.class);

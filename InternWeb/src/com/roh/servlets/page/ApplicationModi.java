@@ -19,7 +19,11 @@ public class ApplicationModi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getPathInfo().matches("/[0-9]+")) {
+		String path = request.getPathInfo().replace("/", "");
+
+		if (request.getSession().getAttribute(path) == null) {
+			response.sendError(405);
+		} else if (request.getPathInfo().matches("/[0-9]+")) {
 			new SelectService().doService(request);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/apply/applyForm.jsp");
@@ -30,7 +34,11 @@ public class ApplicationModi extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getPathInfo().matches("/[0-9]+")) {
+		String path = request.getPathInfo().replace("/", "");
+
+		if (request.getSession().getAttribute(path) == null) {
+			response.sendError(405);
+		} else if (request.getPathInfo().matches("/[0-9]+")) {
 			try {
 				new ModifyService().doService(request);
 

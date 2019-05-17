@@ -1,5 +1,5 @@
-import * as TelePhoneFormatter from "../../formatter/TelePhoneFormatter.js";
-import * as OnlyNumber from "../../validation/OnlyNumber.js";
+import * as TelePhoneFormatter from "../../module/formatter/TelePhoneFormatter.js";
+import * as OnlyNumber from "../../module/validation/OnlyNumber.js";
 
 (function() {
     OnlyNumber.onlyNumber();
